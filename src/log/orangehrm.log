@@ -1,0 +1,773 @@
+[2023-05-08T11:32:41.565737+02:00] orangehrm.ERROR: An exception occurred in the driver: SQLSTATE[HY000] [1045] Access denied for user 'Fajal'@'localhost' (using password: YES) [] []
+[2023-05-08T11:32:41.570484+02:00] orangehrm.ERROR: #0 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(1814): Doctrine\DBAL\Driver\API\MySQL\ExceptionConverter->convert(Object(Doctrine\DBAL\Driver\PDO\Exception), NULL) #1 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(1757): Doctrine\DBAL\Connection->handleDriverException(Object(Doctrine\DBAL\Driver\PDO\Exception), NULL) #2 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(343): Doctrine\DBAL\Connection->convertException(Object(Doctrine\DBAL\Driver\PDO\Exception)) #3 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(405): Doctrine\DBAL\Connection->connect() #4 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(367): Doctrine\DBAL\Connection->getDatabasePlatformVersion() #5 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(284): Doctrine\DBAL\Connection->detectDatabasePlatform() #6 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(91): Doctrine\DBAL\Connection->getDatabasePlatform() #7 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(131): OrangeHRM\ORM\Doctrine->__construct() #8 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(141): OrangeHRM\ORM\Doctrine::getInstance() #9 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(1093): OrangeHRM\ORM\Doctrine::getEntityManager() #10 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(608): Symfony\Component\DependencyInjection\ContainerBuilder->createService(Object(Symfony\Component\DependencyInjection\Definition), Array, true, 'doctrine.entity...') #11 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(553): Symfony\Component\DependencyInjection\ContainerBuilder->doGet('doctrine.entity...', 1) #12 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Traits\ORM\EntityManagerTrait.php(34): Symfony\Component\DependencyInjection\ContainerBuilder->get('doctrine.entity...') #13 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Traits\ORM\EntityManagerHelperTrait.php(42): OrangeHRM\Core\Dao\BaseDao->getEntityManager() #14 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Dao\ConfigDao.php(64): OrangeHRM\Core\Dao\BaseDao->getRepository('OrangeHRM\\Entit...') #15 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Service\ConfigService.php(136): OrangeHRM\Core\Dao\ConfigDao->getValue('instance.identi...') #16 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Service\ConfigService.php(415): OrangeHRM\Core\Service\ConfigService->_getConfigValue('instance.identi...') #17 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\config\CorePluginConfiguration.php(120): OrangeHRM\Core\Service\ConfigService->getInstanceIdentifier() #18 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\config\CorePluginConfiguration.php(102): CorePluginConfiguration->registerCoreSubscribers() #19 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(138): CorePluginConfiguration->initialize(Object(OrangeHRM\Framework\Http\Request)) #20 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(155): OrangeHRM\Framework\Framework->configurePlugins(Object(OrangeHRM\Framework\Http\Request)) #21 C:\xampp\htdocs\difm-hrms\web\index.php(42): OrangeHRM\Framework\Framework->handleRequest(Object(OrangeHRM\Framework\Http\Request)) #22 {main} [] []
+[08-May-2023 11:32:41 Europe/Berlin] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user 'Fajal'@'localhost' (using password: YES) in C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Driver\PDO\MySQL\Driver.php:27
+Stack trace:
+#0 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Driver\PDO\MySQL\Driver.php(27): PDO->__construct('mysql:host=loca...', 'Fajal', Object(SensitiveParameterValue), Array)
+#1 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(341): Doctrine\DBAL\Driver\PDO\MySQL\Driver->connect(Array)
+#2 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(405): Doctrine\DBAL\Connection->connect()
+#3 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(367): Doctrine\DBAL\Connection->getDatabasePlatformVersion()
+#4 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(284): Doctrine\DBAL\Connection->detectDatabasePlatform()
+#5 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(91): Doctrine\DBAL\Connection->getDatabasePlatform()
+#6 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(131): OrangeHRM\ORM\Doctrine->__construct()
+#7 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(141): OrangeHRM\ORM\Doctrine::getInstance()
+#8 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(1093): OrangeHRM\ORM\Doctrine::getEntityManager()
+#9 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(608): Symfony\Component\DependencyInjection\ContainerBuilder->createService(Object(Symfony\Component\DependencyInjection\Definition), Array, true, 'doctrine.entity...')
+#10 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(553): Symfony\Component\DependencyInjection\ContainerBuilder->doGet('doctrine.entity...', 1)
+#11 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Traits\ORM\EntityManagerTrait.php(34): Symfony\Component\DependencyInjection\ContainerBuilder->get('doctrine.entity...')
+#12 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Traits\ORM\EntityManagerHelperTrait.php(42): OrangeHRM\Core\Dao\BaseDao->getEntityManager()
+#13 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Dao\ConfigDao.php(64): OrangeHRM\Core\Dao\BaseDao->getRepository('OrangeHRM\\Entit...')
+#14 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Service\ConfigService.php(136): OrangeHRM\Core\Dao\ConfigDao->getValue('instance.identi...')
+#15 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Service\ConfigService.php(415): OrangeHRM\Core\Service\ConfigService->_getConfigValue('instance.identi...')
+#16 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\config\CorePluginConfiguration.php(120): OrangeHRM\Core\Service\ConfigService->getInstanceIdentifier()
+#17 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\config\CorePluginConfiguration.php(102): CorePluginConfiguration->registerCoreSubscribers()
+#18 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(138): CorePluginConfiguration->initialize(Object(OrangeHRM\Framework\Http\Request))
+#19 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(155): OrangeHRM\Framework\Framework->configurePlugins(Object(OrangeHRM\Framework\Http\Request))
+#20 C:\xampp\htdocs\difm-hrms\web\index.php(42): OrangeHRM\Framework\Framework->handleRequest(Object(OrangeHRM\Framework\Http\Request))
+#21 {main}
+
+Next Doctrine\DBAL\Driver\PDO\Exception: SQLSTATE[HY000] [1045] Access denied for user 'Fajal'@'localhost' (using password: YES) in C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Driver\PDO\Exception.php:30
+Stack trace:
+#0 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Driver\PDO\MySQL\Driver.php(34): Doctrine\DBAL\Driver\PDO\Exception::new(Object(PDOException))
+#1 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(341): Doctrine\DBAL\Driver\PDO\MySQL\Driver->connect(Array)
+#2 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(405): Doctrine\DBAL\Connection->connect()
+#3 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(367): Doctrine\DBAL\Connection->getDatabasePlatformVersion()
+#4 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(284): Doctrine\DBAL\Connection->detectDatabasePlatform()
+#5 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(91): Doctrine\DBAL\Connection->getDatabasePlatform()
+#6 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(131): OrangeHRM\ORM\Doctrine->__construct()
+#7 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(141): OrangeHRM\ORM\Doctrine::getInstance()
+#8 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(1093): OrangeHRM\ORM\Doctrine::getEntityManager()
+#9 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(608): Symfony\Component\DependencyInjection\ContainerBuilder->createService(Object(Symfony\Component\DependencyInjection\Definition), Array, true, 'doctrine.entity...')
+#10 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(553): Symfony\Component\DependencyInjection\ContainerBuilder->doGet('doctrine.entity...', 1)
+#11 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Traits\ORM\EntityManagerTrait.php(34): Symfony\Component\DependencyInjection\ContainerBuilder->get('doctrine.entity...')
+#12 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Traits\ORM\EntityManagerHelperTrait.php(42): OrangeHRM\Core\Dao\BaseDao->getEntityManager()
+#13 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Dao\ConfigDao.php(64): OrangeHRM\Core\Dao\BaseDao->getRepository('OrangeHRM\\Entit...')
+#14 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Service\ConfigService.php(136): OrangeHRM\Core\Dao\ConfigDao->getValue('instance.identi...')
+#15 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Service\ConfigService.php(415): OrangeHRM\Core\Service\ConfigService->_getConfigValue('instance.identi...')
+#16 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\config\CorePluginConfiguration.php(120): OrangeHRM\Core\Service\ConfigService->getInstanceIdentifier()
+#17 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\config\CorePluginConfiguration.php(102): CorePluginConfiguration->registerCoreSubscribers()
+#18 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(138): CorePluginConfiguration->initialize(Object(OrangeHRM\Framework\Http\Request))
+#19 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(155): OrangeHRM\Framework\Framework->configurePlugins(Object(OrangeHRM\Framework\Http\Request))
+#20 C:\xampp\htdocs\difm-hrms\web\index.php(42): OrangeHRM\Framework\Framework->handleRequest(Object(OrangeHRM\Framework\Http\Request))
+#21 {main}
+
+Next Doctrine\DBAL\Exception\ConnectionException: An exception occurred in the driver: SQLSTATE[HY000] [1045] Access denied for user 'Fajal'@'localhost' (using password: YES) in C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Driver\API\MySQL\ExceptionConverter.php:103
+Stack trace:
+#0 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(1814): Doctrine\DBAL\Driver\API\MySQL\ExceptionConverter->convert(Object(Doctrine\DBAL\Driver\PDO\Exception), NULL)
+#1 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(1757): Doctrine\DBAL\Connection->handleDriverException(Object(Doctrine\DBAL\Driver\PDO\Exception), NULL)
+#2 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(343): Doctrine\DBAL\Connection->convertException(Object(Doctrine\DBAL\Driver\PDO\Exception))
+#3 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(405): Doctrine\DBAL\Connection->connect()
+#4 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(367): Doctrine\DBAL\Connection->getDatabasePlatformVersion()
+#5 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(284): Doctrine\DBAL\Connection->detectDatabasePlatform()
+#6 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(91): Doctrine\DBAL\Connection->getDatabasePlatform()
+#7 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(131): OrangeHRM\ORM\Doctrine->__construct()
+#8 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(141): OrangeHRM\ORM\Doctrine::getInstance()
+#9 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(1093): OrangeHRM\ORM\Doctrine::getEntityManager()
+#10 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(608): Symfony\Component\DependencyInjection\ContainerBuilder->createService(Object(Symfony\Component\DependencyInjection\Definition), Array, true, 'doctrine.entity...')
+#11 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(553): Symfony\Component\DependencyInjection\ContainerBuilder->doGet('doctrine.entity...', 1)
+#12 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Traits\ORM\EntityManagerTrait.php(34): Symfony\Component\DependencyInjection\ContainerBuilder->get('doctrine.entity...')
+#13 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Traits\ORM\EntityManagerHelperTrait.php(42): OrangeHRM\Core\Dao\BaseDao->getEntityManager()
+#14 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Dao\ConfigDao.php(64): OrangeHRM\Core\Dao\BaseDao->getRepository('OrangeHRM\\Entit...')
+#15 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Service\ConfigService.php(136): OrangeHRM\Core\Dao\ConfigDao->getValue('instance.identi...')
+#16 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Service\ConfigService.php(415): OrangeHRM\Core\Service\ConfigService->_getConfigValue('instance.identi...')
+#17 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\config\CorePluginConfiguration.php(120): OrangeHRM\Core\Service\ConfigService->getInstanceIdentifier()
+#18 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\config\CorePluginConfiguration.php(102): CorePluginConfiguration->registerCoreSubscribers()
+#19 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(138): CorePluginConfiguration->initialize(Object(OrangeHRM\Framework\Http\Request))
+#20 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(155): OrangeHRM\Framework\Framework->configurePlugins(Object(OrangeHRM\Framework\Http\Request))
+#21 C:\xampp\htdocs\difm-hrms\web\index.php(42): OrangeHRM\Framework\Framework->handleRequest(Object(OrangeHRM\Framework\Http\Request))
+#22 {main}
+
+Next OrangeHRM\Core\Exception\DaoException: An exception occurred in the driver: SQLSTATE[HY000] [1045] Access denied for user 'Fajal'@'localhost' (using password: YES) in C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Dao\ConfigDao.php:72
+Stack trace:
+#0 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Service\ConfigService.php(136): OrangeHRM\Core\Dao\ConfigDao->getValue('instance.identi...')
+#1 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Service\ConfigService.php(415): OrangeHRM\Core\Service\ConfigService->_getConfigValue('instance.identi...')
+#2 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\config\CorePluginConfiguration.php(120): OrangeHRM\Core\Service\ConfigService->getInstanceIdentifier()
+#3 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\config\CorePluginConfiguration.php(102): CorePluginConfiguration->registerCoreSubscribers()
+#4 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(138): CorePluginConfiguration->initialize(Object(OrangeHRM\Framework\Http\Request))
+#5 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(155): OrangeHRM\Framework\Framework->configurePlugins(Object(OrangeHRM\Framework\Http\Request))
+#6 C:\xampp\htdocs\difm-hrms\web\index.php(42): OrangeHRM\Framework\Framework->handleRequest(Object(OrangeHRM\Framework\Http\Request))
+#7 {main}
+  thrown in C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Dao\ConfigDao.php on line 72
+[2023-05-08T12:30:52.665339+02:00] orangehrm.ERROR:  [] []
+[2023-05-08T12:30:52.668414+02:00] orangehrm.ERROR: #0 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\event-dispatcher\EventDispatcher.php(230): OrangeHRM\Time\Subscriber\TimesheetPeriodSubscriber->onRequestEvent(Object(Symfony\Component\HttpKernel\Event\RequestEvent), 'kernel.request', Object(OrangeHRM\Framework\Event\EventDispatcher)) #1 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\event-dispatcher\EventDispatcher.php(59): Symfony\Component\EventDispatcher\EventDispatcher->callListeners(Array, 'kernel.request', Object(Symfony\Component\HttpKernel\Event\RequestEvent)) #2 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\http-kernel\HttpKernel.php(128): Symfony\Component\EventDispatcher\EventDispatcher->dispatch(Object(Symfony\Component\HttpKernel\Event\RequestEvent), 'kernel.request') #3 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\http-kernel\HttpKernel.php(74): Symfony\Component\HttpKernel\HttpKernel->handleRaw(Object(OrangeHRM\Framework\Http\Request), 1) #4 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(157): Symfony\Component\HttpKernel\HttpKernel->handle(Object(OrangeHRM\Framework\Http\Request), 1, true) #5 C:\xampp\htdocs\difm-hrms\web\index.php(42): OrangeHRM\Framework\Framework->handleRequest(Object(OrangeHRM\Framework\Http\Request)) #6 {main} [] []
+[2023-05-09T13:56:28.494804+02:00] orangehrm.ERROR: An exception occurred in the driver: SQLSTATE[HY000] [1045] Access denied for user 'Fajal'@'localhost' (using password: YES) [] []
+[2023-05-09T13:56:28.536107+02:00] orangehrm.ERROR: #0 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(1814): Doctrine\DBAL\Driver\API\MySQL\ExceptionConverter->convert(Object(Doctrine\DBAL\Driver\PDO\Exception), NULL) #1 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(1757): Doctrine\DBAL\Connection->handleDriverException(Object(Doctrine\DBAL\Driver\PDO\Exception), NULL) #2 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(343): Doctrine\DBAL\Connection->convertException(Object(Doctrine\DBAL\Driver\PDO\Exception)) #3 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(405): Doctrine\DBAL\Connection->connect() #4 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(367): Doctrine\DBAL\Connection->getDatabasePlatformVersion() #5 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(284): Doctrine\DBAL\Connection->detectDatabasePlatform() #6 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(91): Doctrine\DBAL\Connection->getDatabasePlatform() #7 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(131): OrangeHRM\ORM\Doctrine->__construct() #8 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(141): OrangeHRM\ORM\Doctrine::getInstance() #9 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(1093): OrangeHRM\ORM\Doctrine::getEntityManager() #10 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(608): Symfony\Component\DependencyInjection\ContainerBuilder->createService(Object(Symfony\Component\DependencyInjection\Definition), Array, true, 'doctrine.entity...') #11 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(553): Symfony\Component\DependencyInjection\ContainerBuilder->doGet('doctrine.entity...', 1) #12 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Traits\ORM\EntityManagerTrait.php(34): Symfony\Component\DependencyInjection\ContainerBuilder->get('doctrine.entity...') #13 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Traits\ORM\EntityManagerHelperTrait.php(42): OrangeHRM\Core\Dao\BaseDao->getEntityManager() #14 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Dao\ConfigDao.php(64): OrangeHRM\Core\Dao\BaseDao->getRepository('OrangeHRM\\Entit...') #15 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Service\ConfigService.php(136): OrangeHRM\Core\Dao\ConfigDao->getValue('instance.identi...') #16 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Service\ConfigService.php(415): OrangeHRM\Core\Service\ConfigService->_getConfigValue('instance.identi...') #17 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\config\CorePluginConfiguration.php(120): OrangeHRM\Core\Service\ConfigService->getInstanceIdentifier() #18 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\config\CorePluginConfiguration.php(102): CorePluginConfiguration->registerCoreSubscribers() #19 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(138): CorePluginConfiguration->initialize(Object(OrangeHRM\Framework\Http\Request)) #20 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(155): OrangeHRM\Framework\Framework->configurePlugins(Object(OrangeHRM\Framework\Http\Request)) #21 C:\xampp\htdocs\difm-hrms\web\index.php(42): OrangeHRM\Framework\Framework->handleRequest(Object(OrangeHRM\Framework\Http\Request)) #22 {main} [] []
+[09-May-2023 13:56:28 Europe/Berlin] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user 'Fajal'@'localhost' (using password: YES) in C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Driver\PDO\MySQL\Driver.php:27
+Stack trace:
+#0 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Driver\PDO\MySQL\Driver.php(27): PDO->__construct('mysql:host=loca...', 'Fajal', Object(SensitiveParameterValue), Array)
+#1 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(341): Doctrine\DBAL\Driver\PDO\MySQL\Driver->connect(Array)
+#2 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(405): Doctrine\DBAL\Connection->connect()
+#3 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(367): Doctrine\DBAL\Connection->getDatabasePlatformVersion()
+#4 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(284): Doctrine\DBAL\Connection->detectDatabasePlatform()
+#5 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(91): Doctrine\DBAL\Connection->getDatabasePlatform()
+#6 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(131): OrangeHRM\ORM\Doctrine->__construct()
+#7 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(141): OrangeHRM\ORM\Doctrine::getInstance()
+#8 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(1093): OrangeHRM\ORM\Doctrine::getEntityManager()
+#9 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(608): Symfony\Component\DependencyInjection\ContainerBuilder->createService(Object(Symfony\Component\DependencyInjection\Definition), Array, true, 'doctrine.entity...')
+#10 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(553): Symfony\Component\DependencyInjection\ContainerBuilder->doGet('doctrine.entity...', 1)
+#11 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Traits\ORM\EntityManagerTrait.php(34): Symfony\Component\DependencyInjection\ContainerBuilder->get('doctrine.entity...')
+#12 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Traits\ORM\EntityManagerHelperTrait.php(42): OrangeHRM\Core\Dao\BaseDao->getEntityManager()
+#13 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Dao\ConfigDao.php(64): OrangeHRM\Core\Dao\BaseDao->getRepository('OrangeHRM\\Entit...')
+#14 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Service\ConfigService.php(136): OrangeHRM\Core\Dao\ConfigDao->getValue('instance.identi...')
+#15 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Service\ConfigService.php(415): OrangeHRM\Core\Service\ConfigService->_getConfigValue('instance.identi...')
+#16 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\config\CorePluginConfiguration.php(120): OrangeHRM\Core\Service\ConfigService->getInstanceIdentifier()
+#17 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\config\CorePluginConfiguration.php(102): CorePluginConfiguration->registerCoreSubscribers()
+#18 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(138): CorePluginConfiguration->initialize(Object(OrangeHRM\Framework\Http\Request))
+#19 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(155): OrangeHRM\Framework\Framework->configurePlugins(Object(OrangeHRM\Framework\Http\Request))
+#20 C:\xampp\htdocs\difm-hrms\web\index.php(42): OrangeHRM\Framework\Framework->handleRequest(Object(OrangeHRM\Framework\Http\Request))
+#21 {main}
+
+Next Doctrine\DBAL\Driver\PDO\Exception: SQLSTATE[HY000] [1045] Access denied for user 'Fajal'@'localhost' (using password: YES) in C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Driver\PDO\Exception.php:30
+Stack trace:
+#0 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Driver\PDO\MySQL\Driver.php(34): Doctrine\DBAL\Driver\PDO\Exception::new(Object(PDOException))
+#1 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(341): Doctrine\DBAL\Driver\PDO\MySQL\Driver->connect(Array)
+#2 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(405): Doctrine\DBAL\Connection->connect()
+#3 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(367): Doctrine\DBAL\Connection->getDatabasePlatformVersion()
+#4 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(284): Doctrine\DBAL\Connection->detectDatabasePlatform()
+#5 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(91): Doctrine\DBAL\Connection->getDatabasePlatform()
+#6 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(131): OrangeHRM\ORM\Doctrine->__construct()
+#7 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(141): OrangeHRM\ORM\Doctrine::getInstance()
+#8 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(1093): OrangeHRM\ORM\Doctrine::getEntityManager()
+#9 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(608): Symfony\Component\DependencyInjection\ContainerBuilder->createService(Object(Symfony\Component\DependencyInjection\Definition), Array, true, 'doctrine.entity...')
+#10 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(553): Symfony\Component\DependencyInjection\ContainerBuilder->doGet('doctrine.entity...', 1)
+#11 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Traits\ORM\EntityManagerTrait.php(34): Symfony\Component\DependencyInjection\ContainerBuilder->get('doctrine.entity...')
+#12 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Traits\ORM\EntityManagerHelperTrait.php(42): OrangeHRM\Core\Dao\BaseDao->getEntityManager()
+#13 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Dao\ConfigDao.php(64): OrangeHRM\Core\Dao\BaseDao->getRepository('OrangeHRM\\Entit...')
+#14 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Service\ConfigService.php(136): OrangeHRM\Core\Dao\ConfigDao->getValue('instance.identi...')
+#15 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Service\ConfigService.php(415): OrangeHRM\Core\Service\ConfigService->_getConfigValue('instance.identi...')
+#16 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\config\CorePluginConfiguration.php(120): OrangeHRM\Core\Service\ConfigService->getInstanceIdentifier()
+#17 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\config\CorePluginConfiguration.php(102): CorePluginConfiguration->registerCoreSubscribers()
+#18 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(138): CorePluginConfiguration->initialize(Object(OrangeHRM\Framework\Http\Request))
+#19 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(155): OrangeHRM\Framework\Framework->configurePlugins(Object(OrangeHRM\Framework\Http\Request))
+#20 C:\xampp\htdocs\difm-hrms\web\index.php(42): OrangeHRM\Framework\Framework->handleRequest(Object(OrangeHRM\Framework\Http\Request))
+#21 {main}
+
+Next Doctrine\DBAL\Exception\ConnectionException: An exception occurred in the driver: SQLSTATE[HY000] [1045] Access denied for user 'Fajal'@'localhost' (using password: YES) in C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Driver\API\MySQL\ExceptionConverter.php:103
+Stack trace:
+#0 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(1814): Doctrine\DBAL\Driver\API\MySQL\ExceptionConverter->convert(Object(Doctrine\DBAL\Driver\PDO\Exception), NULL)
+#1 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(1757): Doctrine\DBAL\Connection->handleDriverException(Object(Doctrine\DBAL\Driver\PDO\Exception), NULL)
+#2 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(343): Doctrine\DBAL\Connection->convertException(Object(Doctrine\DBAL\Driver\PDO\Exception))
+#3 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(405): Doctrine\DBAL\Connection->connect()
+#4 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(367): Doctrine\DBAL\Connection->getDatabasePlatformVersion()
+#5 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(284): Doctrine\DBAL\Connection->detectDatabasePlatform()
+#6 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(91): Doctrine\DBAL\Connection->getDatabasePlatform()
+#7 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(131): OrangeHRM\ORM\Doctrine->__construct()
+#8 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(141): OrangeHRM\ORM\Doctrine::getInstance()
+#9 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(1093): OrangeHRM\ORM\Doctrine::getEntityManager()
+#10 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(608): Symfony\Component\DependencyInjection\ContainerBuilder->createService(Object(Symfony\Component\DependencyInjection\Definition), Array, true, 'doctrine.entity...')
+#11 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(553): Symfony\Component\DependencyInjection\ContainerBuilder->doGet('doctrine.entity...', 1)
+#12 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Traits\ORM\EntityManagerTrait.php(34): Symfony\Component\DependencyInjection\ContainerBuilder->get('doctrine.entity...')
+#13 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Traits\ORM\EntityManagerHelperTrait.php(42): OrangeHRM\Core\Dao\BaseDao->getEntityManager()
+#14 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Dao\ConfigDao.php(64): OrangeHRM\Core\Dao\BaseDao->getRepository('OrangeHRM\\Entit...')
+#15 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Service\ConfigService.php(136): OrangeHRM\Core\Dao\ConfigDao->getValue('instance.identi...')
+#16 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Service\ConfigService.php(415): OrangeHRM\Core\Service\ConfigService->_getConfigValue('instance.identi...')
+#17 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\config\CorePluginConfiguration.php(120): OrangeHRM\Core\Service\ConfigService->getInstanceIdentifier()
+#18 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\config\CorePluginConfiguration.php(102): CorePluginConfiguration->registerCoreSubscribers()
+#19 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(138): CorePluginConfiguration->initialize(Object(OrangeHRM\Framework\Http\Request))
+#20 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(155): OrangeHRM\Framework\Framework->configurePlugins(Object(OrangeHRM\Framework\Http\Request))
+#21 C:\xampp\htdocs\difm-hrms\web\index.php(42): OrangeHRM\Framework\Framework->handleRequest(Object(OrangeHRM\Framework\Http\Request))
+#22 {main}
+
+Next OrangeHRM\Core\Exception\DaoException: An exception occurred in the driver: SQLSTATE[HY000] [1045] Access denied for user 'Fajal'@'localhost' (using password: YES) in C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Dao\ConfigDao.php:72
+Stack trace:
+#0 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Service\ConfigService.php(136): OrangeHRM\Core\Dao\ConfigDao->getValue('instance.identi...')
+#1 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Service\ConfigService.php(415): OrangeHRM\Core\Service\ConfigService->_getConfigValue('instance.identi...')
+#2 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\config\CorePluginConfiguration.php(120): OrangeHRM\Core\Service\ConfigService->getInstanceIdentifier()
+#3 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\config\CorePluginConfiguration.php(102): CorePluginConfiguration->registerCoreSubscribers()
+#4 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(138): CorePluginConfiguration->initialize(Object(OrangeHRM\Framework\Http\Request))
+#5 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(155): OrangeHRM\Framework\Framework->configurePlugins(Object(OrangeHRM\Framework\Http\Request))
+#6 C:\xampp\htdocs\difm-hrms\web\index.php(42): OrangeHRM\Framework\Framework->handleRequest(Object(OrangeHRM\Framework\Http\Request))
+#7 {main}
+  thrown in C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Dao\ConfigDao.php on line 72
+[2023-05-10T07:31:46.678382+02:00] orangehrm.ERROR:  [] []
+[2023-05-10T07:31:46.724691+02:00] orangehrm.ERROR: #0 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\event-dispatcher\EventDispatcher.php(230): OrangeHRM\Authentication\Subscriber\AuthenticationSubscriber->onControllerEvent(Object(Symfony\Component\HttpKernel\Event\ControllerEvent), 'kernel.controll...', Object(OrangeHRM\Framework\Event\EventDispatcher)) #1 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\event-dispatcher\EventDispatcher.php(59): Symfony\Component\EventDispatcher\EventDispatcher->callListeners(Array, 'kernel.controll...', Object(Symfony\Component\HttpKernel\Event\ControllerEvent)) #2 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\http-kernel\HttpKernel.php(140): Symfony\Component\EventDispatcher\EventDispatcher->dispatch(Object(Symfony\Component\HttpKernel\Event\ControllerEvent), 'kernel.controll...') #3 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\http-kernel\HttpKernel.php(74): Symfony\Component\HttpKernel\HttpKernel->handleRaw(Object(OrangeHRM\Framework\Http\Request), 1) #4 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(157): Symfony\Component\HttpKernel\HttpKernel->handle(Object(OrangeHRM\Framework\Http\Request), 1, true) #5 C:\xampp\htdocs\difm-hrms\web\index.php(42): OrangeHRM\Framework\Framework->handleRequest(Object(OrangeHRM\Framework\Http\Request)) #6 {main} [] []
+[2023-05-10T07:31:46.946863+02:00] orangehrm.ERROR: Session expired [] []
+[2023-05-10T07:31:46.949954+02:00] orangehrm.ERROR: #0 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\event-dispatcher\EventDispatcher.php(230): OrangeHRM\Authentication\Subscriber\AuthenticationSubscriber->onControllerEvent(Object(Symfony\Component\HttpKernel\Event\ControllerEvent), 'kernel.controll...', Object(OrangeHRM\Framework\Event\EventDispatcher)) #1 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\event-dispatcher\EventDispatcher.php(59): Symfony\Component\EventDispatcher\EventDispatcher->callListeners(Array, 'kernel.controll...', Object(Symfony\Component\HttpKernel\Event\ControllerEvent)) #2 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\http-kernel\HttpKernel.php(140): Symfony\Component\EventDispatcher\EventDispatcher->dispatch(Object(Symfony\Component\HttpKernel\Event\ControllerEvent), 'kernel.controll...') #3 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\http-kernel\HttpKernel.php(74): Symfony\Component\HttpKernel\HttpKernel->handleRaw(Object(OrangeHRM\Framework\Http\Request), 1) #4 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(157): Symfony\Component\HttpKernel\HttpKernel->handle(Object(OrangeHRM\Framework\Http\Request), 1, true) #5 C:\xampp\htdocs\difm-hrms\web\index.php(42): OrangeHRM\Framework\Framework->handleRequest(Object(OrangeHRM\Framework\Http\Request)) #6 {main} [] []
+[2023-05-10T07:31:48.772223+02:00] orangehrm.ERROR:  [] []
+[2023-05-10T07:31:48.773521+02:00] orangehrm.ERROR: #0 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\event-dispatcher\EventDispatcher.php(230): OrangeHRM\Authentication\Subscriber\AuthenticationSubscriber->onControllerEvent(Object(Symfony\Component\HttpKernel\Event\ControllerEvent), 'kernel.controll...', Object(OrangeHRM\Framework\Event\EventDispatcher)) #1 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\event-dispatcher\EventDispatcher.php(59): Symfony\Component\EventDispatcher\EventDispatcher->callListeners(Array, 'kernel.controll...', Object(Symfony\Component\HttpKernel\Event\ControllerEvent)) #2 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\http-kernel\HttpKernel.php(140): Symfony\Component\EventDispatcher\EventDispatcher->dispatch(Object(Symfony\Component\HttpKernel\Event\ControllerEvent), 'kernel.controll...') #3 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\http-kernel\HttpKernel.php(74): Symfony\Component\HttpKernel\HttpKernel->handleRaw(Object(OrangeHRM\Framework\Http\Request), 1) #4 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(157): Symfony\Component\HttpKernel\HttpKernel->handle(Object(OrangeHRM\Framework\Http\Request), 1, true) #5 C:\xampp\htdocs\difm-hrms\web\index.php(42): OrangeHRM\Framework\Framework->handleRequest(Object(OrangeHRM\Framework\Http\Request)) #6 {main} [] []
+[2023-05-10T07:31:49.320401+02:00] orangehrm.ERROR:  [] []
+[2023-05-10T07:31:49.321711+02:00] orangehrm.ERROR: #0 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\event-dispatcher\EventDispatcher.php(230): OrangeHRM\Authentication\Subscriber\AuthenticationSubscriber->onControllerEvent(Object(Symfony\Component\HttpKernel\Event\ControllerEvent), 'kernel.controll...', Object(OrangeHRM\Framework\Event\EventDispatcher)) #1 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\event-dispatcher\EventDispatcher.php(59): Symfony\Component\EventDispatcher\EventDispatcher->callListeners(Array, 'kernel.controll...', Object(Symfony\Component\HttpKernel\Event\ControllerEvent)) #2 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\http-kernel\HttpKernel.php(140): Symfony\Component\EventDispatcher\EventDispatcher->dispatch(Object(Symfony\Component\HttpKernel\Event\ControllerEvent), 'kernel.controll...') #3 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\http-kernel\HttpKernel.php(74): Symfony\Component\HttpKernel\HttpKernel->handleRaw(Object(OrangeHRM\Framework\Http\Request), 1) #4 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(157): Symfony\Component\HttpKernel\HttpKernel->handle(Object(OrangeHRM\Framework\Http\Request), 1, true) #5 C:\xampp\htdocs\difm-hrms\web\index.php(42): OrangeHRM\Framework\Framework->handleRequest(Object(OrangeHRM\Framework\Http\Request)) #6 {main} [] []
+[2023-05-10T07:31:49.408908+02:00] orangehrm.ERROR: Session expired [] []
+[2023-05-10T07:31:49.410982+02:00] orangehrm.ERROR: #0 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\event-dispatcher\EventDispatcher.php(230): OrangeHRM\Authentication\Subscriber\AuthenticationSubscriber->onControllerEvent(Object(Symfony\Component\HttpKernel\Event\ControllerEvent), 'kernel.controll...', Object(OrangeHRM\Framework\Event\EventDispatcher)) #1 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\event-dispatcher\EventDispatcher.php(59): Symfony\Component\EventDispatcher\EventDispatcher->callListeners(Array, 'kernel.controll...', Object(Symfony\Component\HttpKernel\Event\ControllerEvent)) #2 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\http-kernel\HttpKernel.php(140): Symfony\Component\EventDispatcher\EventDispatcher->dispatch(Object(Symfony\Component\HttpKernel\Event\ControllerEvent), 'kernel.controll...') #3 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\http-kernel\HttpKernel.php(74): Symfony\Component\HttpKernel\HttpKernel->handleRaw(Object(OrangeHRM\Framework\Http\Request), 1) #4 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(157): Symfony\Component\HttpKernel\HttpKernel->handle(Object(OrangeHRM\Framework\Http\Request), 1, true) #5 C:\xampp\htdocs\difm-hrms\web\index.php(42): OrangeHRM\Framework\Framework->handleRequest(Object(OrangeHRM\Framework\Http\Request)) #6 {main} [] []
+[2023-05-10T07:31:49.718980+02:00] orangehrm.ERROR:  [] []
+[2023-05-10T07:31:49.720680+02:00] orangehrm.ERROR: #0 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\event-dispatcher\EventDispatcher.php(230): OrangeHRM\Authentication\Subscriber\AuthenticationSubscriber->onControllerEvent(Object(Symfony\Component\HttpKernel\Event\ControllerEvent), 'kernel.controll...', Object(OrangeHRM\Framework\Event\EventDispatcher)) #1 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\event-dispatcher\EventDispatcher.php(59): Symfony\Component\EventDispatcher\EventDispatcher->callListeners(Array, 'kernel.controll...', Object(Symfony\Component\HttpKernel\Event\ControllerEvent)) #2 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\http-kernel\HttpKernel.php(140): Symfony\Component\EventDispatcher\EventDispatcher->dispatch(Object(Symfony\Component\HttpKernel\Event\ControllerEvent), 'kernel.controll...') #3 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\http-kernel\HttpKernel.php(74): Symfony\Component\HttpKernel\HttpKernel->handleRaw(Object(OrangeHRM\Framework\Http\Request), 1) #4 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(157): Symfony\Component\HttpKernel\HttpKernel->handle(Object(OrangeHRM\Framework\Http\Request), 1, true) #5 C:\xampp\htdocs\difm-hrms\web\index.php(42): OrangeHRM\Framework\Framework->handleRequest(Object(OrangeHRM\Framework\Http\Request)) #6 {main} [] []
+[2023-05-10T09:12:41.503494+02:00] orangehrm.ERROR: Session expired [] []
+[2023-05-10T09:12:41.505577+02:00] orangehrm.ERROR: #0 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\event-dispatcher\EventDispatcher.php(230): OrangeHRM\Authentication\Subscriber\AuthenticationSubscriber->onControllerEvent(Object(Symfony\Component\HttpKernel\Event\ControllerEvent), 'kernel.controll...', Object(OrangeHRM\Framework\Event\EventDispatcher)) #1 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\event-dispatcher\EventDispatcher.php(59): Symfony\Component\EventDispatcher\EventDispatcher->callListeners(Array, 'kernel.controll...', Object(Symfony\Component\HttpKernel\Event\ControllerEvent)) #2 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\http-kernel\HttpKernel.php(140): Symfony\Component\EventDispatcher\EventDispatcher->dispatch(Object(Symfony\Component\HttpKernel\Event\ControllerEvent), 'kernel.controll...') #3 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\http-kernel\HttpKernel.php(74): Symfony\Component\HttpKernel\HttpKernel->handleRaw(Object(OrangeHRM\Framework\Http\Request), 1) #4 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(157): Symfony\Component\HttpKernel\HttpKernel->handle(Object(OrangeHRM\Framework\Http\Request), 1, true) #5 C:\xampp\htdocs\difm-hrms\web\index.php(42): OrangeHRM\Framework\Framework->handleRequest(Object(OrangeHRM\Framework\Http\Request)) #6 {main} [] []
+[2023-05-10T09:12:41.783490+02:00] orangehrm.ERROR:  [] []
+[2023-05-10T09:12:41.784781+02:00] orangehrm.ERROR: #0 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\event-dispatcher\EventDispatcher.php(230): OrangeHRM\Authentication\Subscriber\AuthenticationSubscriber->onControllerEvent(Object(Symfony\Component\HttpKernel\Event\ControllerEvent), 'kernel.controll...', Object(OrangeHRM\Framework\Event\EventDispatcher)) #1 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\event-dispatcher\EventDispatcher.php(59): Symfony\Component\EventDispatcher\EventDispatcher->callListeners(Array, 'kernel.controll...', Object(Symfony\Component\HttpKernel\Event\ControllerEvent)) #2 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\http-kernel\HttpKernel.php(140): Symfony\Component\EventDispatcher\EventDispatcher->dispatch(Object(Symfony\Component\HttpKernel\Event\ControllerEvent), 'kernel.controll...') #3 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\http-kernel\HttpKernel.php(74): Symfony\Component\HttpKernel\HttpKernel->handleRaw(Object(OrangeHRM\Framework\Http\Request), 1) #4 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(157): Symfony\Component\HttpKernel\HttpKernel->handle(Object(OrangeHRM\Framework\Http\Request), 1, true) #5 C:\xampp\htdocs\difm-hrms\web\index.php(42): OrangeHRM\Framework\Framework->handleRequest(Object(OrangeHRM\Framework\Http\Request)) #6 {main} [] []
+[2023-05-10T10:41:43.056061+02:00] orangehrm.ERROR: Session expired [] []
+[2023-05-10T10:41:43.057828+02:00] orangehrm.ERROR: #0 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\event-dispatcher\EventDispatcher.php(230): OrangeHRM\Authentication\Subscriber\AuthenticationSubscriber->onControllerEvent(Object(Symfony\Component\HttpKernel\Event\ControllerEvent), 'kernel.controll...', Object(OrangeHRM\Framework\Event\EventDispatcher)) #1 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\event-dispatcher\EventDispatcher.php(59): Symfony\Component\EventDispatcher\EventDispatcher->callListeners(Array, 'kernel.controll...', Object(Symfony\Component\HttpKernel\Event\ControllerEvent)) #2 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\http-kernel\HttpKernel.php(140): Symfony\Component\EventDispatcher\EventDispatcher->dispatch(Object(Symfony\Component\HttpKernel\Event\ControllerEvent), 'kernel.controll...') #3 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\http-kernel\HttpKernel.php(74): Symfony\Component\HttpKernel\HttpKernel->handleRaw(Object(OrangeHRM\Framework\Http\Request), 1) #4 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(157): Symfony\Component\HttpKernel\HttpKernel->handle(Object(OrangeHRM\Framework\Http\Request), 1, true) #5 C:\xampp\htdocs\difm-hrms\web\index.php(42): OrangeHRM\Framework\Framework->handleRequest(Object(OrangeHRM\Framework\Http\Request)) #6 {main} [] []
+[2023-05-10T10:41:43.283447+02:00] orangehrm.ERROR:  [] []
+[2023-05-10T10:41:43.284711+02:00] orangehrm.ERROR: #0 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\event-dispatcher\EventDispatcher.php(230): OrangeHRM\Authentication\Subscriber\AuthenticationSubscriber->onControllerEvent(Object(Symfony\Component\HttpKernel\Event\ControllerEvent), 'kernel.controll...', Object(OrangeHRM\Framework\Event\EventDispatcher)) #1 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\event-dispatcher\EventDispatcher.php(59): Symfony\Component\EventDispatcher\EventDispatcher->callListeners(Array, 'kernel.controll...', Object(Symfony\Component\HttpKernel\Event\ControllerEvent)) #2 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\http-kernel\HttpKernel.php(140): Symfony\Component\EventDispatcher\EventDispatcher->dispatch(Object(Symfony\Component\HttpKernel\Event\ControllerEvent), 'kernel.controll...') #3 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\http-kernel\HttpKernel.php(74): Symfony\Component\HttpKernel\HttpKernel->handleRaw(Object(OrangeHRM\Framework\Http\Request), 1) #4 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(157): Symfony\Component\HttpKernel\HttpKernel->handle(Object(OrangeHRM\Framework\Http\Request), 1, true) #5 C:\xampp\htdocs\difm-hrms\web\index.php(42): OrangeHRM\Framework\Framework->handleRequest(Object(OrangeHRM\Framework\Http\Request)) #6 {main} [] []
+[2023-05-10T12:00:06.756643+02:00] orangehrm.ERROR:  [] []
+[2023-05-10T12:00:06.758359+02:00] orangehrm.ERROR: #0 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\event-dispatcher\EventDispatcher.php(230): OrangeHRM\Authentication\Subscriber\AuthenticationSubscriber->onControllerEvent(Object(Symfony\Component\HttpKernel\Event\ControllerEvent), 'kernel.controll...', Object(OrangeHRM\Framework\Event\EventDispatcher)) #1 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\event-dispatcher\EventDispatcher.php(59): Symfony\Component\EventDispatcher\EventDispatcher->callListeners(Array, 'kernel.controll...', Object(Symfony\Component\HttpKernel\Event\ControllerEvent)) #2 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\http-kernel\HttpKernel.php(140): Symfony\Component\EventDispatcher\EventDispatcher->dispatch(Object(Symfony\Component\HttpKernel\Event\ControllerEvent), 'kernel.controll...') #3 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\http-kernel\HttpKernel.php(74): Symfony\Component\HttpKernel\HttpKernel->handleRaw(Object(OrangeHRM\Framework\Http\Request), 1) #4 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(157): Symfony\Component\HttpKernel\HttpKernel->handle(Object(OrangeHRM\Framework\Http\Request), 1, true) #5 C:\xampp\htdocs\difm-hrms\web\index.php(42): OrangeHRM\Framework\Framework->handleRequest(Object(OrangeHRM\Framework\Http\Request)) #6 {main} [] []
+[2023-05-10T12:01:52.119724+02:00] orangehrm.ERROR: No route found for "GET http://localhost/difm-hrms/web/index.php/leave/showLeavePeriodNotDefinedWarning" (from "http://localhost/difm-hrms/web/index.php/help/support") [] []
+[2023-05-10T12:01:52.121640+02:00] orangehrm.ERROR: #0 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\event-dispatcher\EventDispatcher.php(230): Symfony\Component\HttpKernel\EventListener\RouterListener->onKernelRequest(Object(Symfony\Component\HttpKernel\Event\RequestEvent), 'kernel.request', Object(OrangeHRM\Framework\Event\EventDispatcher)) #1 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\event-dispatcher\EventDispatcher.php(59): Symfony\Component\EventDispatcher\EventDispatcher->callListeners(Array, 'kernel.request', Object(Symfony\Component\HttpKernel\Event\RequestEvent)) #2 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\http-kernel\HttpKernel.php(128): Symfony\Component\EventDispatcher\EventDispatcher->dispatch(Object(Symfony\Component\HttpKernel\Event\RequestEvent), 'kernel.request') #3 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\http-kernel\HttpKernel.php(74): Symfony\Component\HttpKernel\HttpKernel->handleRaw(Object(OrangeHRM\Framework\Http\Request), 1) #4 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(157): Symfony\Component\HttpKernel\HttpKernel->handle(Object(OrangeHRM\Framework\Http\Request), 1, true) #5 C:\xampp\htdocs\difm-hrms\web\index.php(42): OrangeHRM\Framework\Framework->handleRequest(Object(OrangeHRM\Framework\Http\Request)) #6 {main} [] []
+[2023-05-10T12:02:02.970011+02:00] orangehrm.ERROR:  [] []
+[2023-05-10T12:02:02.971297+02:00] orangehrm.ERROR: #0 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\event-dispatcher\EventDispatcher.php(230): OrangeHRM\Time\Subscriber\TimesheetPeriodSubscriber->onRequestEvent(Object(Symfony\Component\HttpKernel\Event\RequestEvent), 'kernel.request', Object(OrangeHRM\Framework\Event\EventDispatcher)) #1 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\event-dispatcher\EventDispatcher.php(59): Symfony\Component\EventDispatcher\EventDispatcher->callListeners(Array, 'kernel.request', Object(Symfony\Component\HttpKernel\Event\RequestEvent)) #2 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\http-kernel\HttpKernel.php(128): Symfony\Component\EventDispatcher\EventDispatcher->dispatch(Object(Symfony\Component\HttpKernel\Event\RequestEvent), 'kernel.request') #3 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\http-kernel\HttpKernel.php(74): Symfony\Component\HttpKernel\HttpKernel->handleRaw(Object(OrangeHRM\Framework\Http\Request), 1) #4 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(157): Symfony\Component\HttpKernel\HttpKernel->handle(Object(OrangeHRM\Framework\Http\Request), 1, true) #5 C:\xampp\htdocs\difm-hrms\web\index.php(42): OrangeHRM\Framework\Framework->handleRequest(Object(OrangeHRM\Framework\Http\Request)) #6 {main} [] []
+[2023-05-10T12:06:51.158361+02:00] orangehrm.ERROR: No route found for "GET http://localhost/difm-hrms/web/index.php/leave/showLeavePeriodNotDefinedWarning" (from "http://localhost/difm-hrms/web/index.php/buzz/viewBuzz") [] []
+[2023-05-10T12:06:51.160453+02:00] orangehrm.ERROR: #0 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\event-dispatcher\EventDispatcher.php(230): Symfony\Component\HttpKernel\EventListener\RouterListener->onKernelRequest(Object(Symfony\Component\HttpKernel\Event\RequestEvent), 'kernel.request', Object(OrangeHRM\Framework\Event\EventDispatcher)) #1 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\event-dispatcher\EventDispatcher.php(59): Symfony\Component\EventDispatcher\EventDispatcher->callListeners(Array, 'kernel.request', Object(Symfony\Component\HttpKernel\Event\RequestEvent)) #2 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\http-kernel\HttpKernel.php(128): Symfony\Component\EventDispatcher\EventDispatcher->dispatch(Object(Symfony\Component\HttpKernel\Event\RequestEvent), 'kernel.request') #3 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\http-kernel\HttpKernel.php(74): Symfony\Component\HttpKernel\HttpKernel->handleRaw(Object(OrangeHRM\Framework\Http\Request), 1) #4 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(157): Symfony\Component\HttpKernel\HttpKernel->handle(Object(OrangeHRM\Framework\Http\Request), 1, true) #5 C:\xampp\htdocs\difm-hrms\web\index.php(42): OrangeHRM\Framework\Framework->handleRequest(Object(OrangeHRM\Framework\Http\Request)) #6 {main} [] []
+[2023-05-10T12:07:17.356580+02:00] orangehrm.ERROR:  [] []
+[2023-05-10T12:07:17.358174+02:00] orangehrm.ERROR: #0 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\event-dispatcher\EventDispatcher.php(230): OrangeHRM\Time\Subscriber\TimesheetPeriodSubscriber->onRequestEvent(Object(Symfony\Component\HttpKernel\Event\RequestEvent), 'kernel.request', Object(OrangeHRM\Framework\Event\EventDispatcher)) #1 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\event-dispatcher\EventDispatcher.php(59): Symfony\Component\EventDispatcher\EventDispatcher->callListeners(Array, 'kernel.request', Object(Symfony\Component\HttpKernel\Event\RequestEvent)) #2 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\http-kernel\HttpKernel.php(128): Symfony\Component\EventDispatcher\EventDispatcher->dispatch(Object(Symfony\Component\HttpKernel\Event\RequestEvent), 'kernel.request') #3 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\http-kernel\HttpKernel.php(74): Symfony\Component\HttpKernel\HttpKernel->handleRaw(Object(OrangeHRM\Framework\Http\Request), 1) #4 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(157): Symfony\Component\HttpKernel\HttpKernel->handle(Object(OrangeHRM\Framework\Http\Request), 1, true) #5 C:\xampp\htdocs\difm-hrms\web\index.php(42): OrangeHRM\Framework\Framework->handleRequest(Object(OrangeHRM\Framework\Http\Request)) #6 {main} [] []
+[2023-05-10T12:13:11.820740+02:00] orangehrm.ERROR:  [] []
+[2023-05-10T12:13:11.822326+02:00] orangehrm.ERROR: #0 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\event-dispatcher\EventDispatcher.php(230): OrangeHRM\Time\Subscriber\TimesheetPeriodSubscriber->onRequestEvent(Object(Symfony\Component\HttpKernel\Event\RequestEvent), 'kernel.request', Object(OrangeHRM\Framework\Event\EventDispatcher)) #1 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\event-dispatcher\EventDispatcher.php(59): Symfony\Component\EventDispatcher\EventDispatcher->callListeners(Array, 'kernel.request', Object(Symfony\Component\HttpKernel\Event\RequestEvent)) #2 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\http-kernel\HttpKernel.php(128): Symfony\Component\EventDispatcher\EventDispatcher->dispatch(Object(Symfony\Component\HttpKernel\Event\RequestEvent), 'kernel.request') #3 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\http-kernel\HttpKernel.php(74): Symfony\Component\HttpKernel\HttpKernel->handleRaw(Object(OrangeHRM\Framework\Http\Request), 1) #4 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(157): Symfony\Component\HttpKernel\HttpKernel->handle(Object(OrangeHRM\Framework\Http\Request), 1, true) #5 C:\xampp\htdocs\difm-hrms\web\index.php(42): OrangeHRM\Framework\Framework->handleRequest(Object(OrangeHRM\Framework\Http\Request)) #6 {main} [] []
+[2023-05-10T12:32:57.052743+02:00] orangehrm.ERROR: No workflow item found for APPLY leave action! [] []
+[2023-05-10T12:33:27.392860+02:00] orangehrm.ERROR: No workflow item found for APPLY leave action! [] []
+[2023-05-10T12:33:41.995714+02:00] orangehrm.ERROR: No workflow item found for APPLY leave action! [] []
+[2023-05-10T12:33:42.012417+02:00] orangehrm.ERROR: No workflow item found for APPLY leave action! [] []
+[2023-05-10T12:33:42.018821+02:00] orangehrm.ERROR: No workflow item found for APPLY leave action! [] []
+[2023-05-10T12:33:46.923568+02:00] orangehrm.ERROR: No workflow item found for APPLY leave action! [] []
+[2023-05-10T12:33:46.941184+02:00] orangehrm.ERROR: No workflow item found for APPLY leave action! [] []
+[2023-05-10T12:33:46.945797+02:00] orangehrm.ERROR: No workflow item found for APPLY leave action! [] []
+[2023-05-10T12:33:51.394311+02:00] orangehrm.ERROR: No workflow item found for APPLY leave action! [] []
+[2023-05-10T12:33:56.787451+02:00] orangehrm.ERROR: No workflow item found for APPLY leave action! [] []
+[2023-05-11T06:44:30.892144+02:00] orangehrm.ERROR: An exception occurred in the driver: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it [] []
+[2023-05-11T06:44:30.895370+02:00] orangehrm.ERROR: #0 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(1814): Doctrine\DBAL\Driver\API\MySQL\ExceptionConverter->convert(Object(Doctrine\DBAL\Driver\PDO\Exception), NULL) #1 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(1757): Doctrine\DBAL\Connection->handleDriverException(Object(Doctrine\DBAL\Driver\PDO\Exception), NULL) #2 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(343): Doctrine\DBAL\Connection->convertException(Object(Doctrine\DBAL\Driver\PDO\Exception)) #3 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(405): Doctrine\DBAL\Connection->connect() #4 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(367): Doctrine\DBAL\Connection->getDatabasePlatformVersion() #5 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(284): Doctrine\DBAL\Connection->detectDatabasePlatform() #6 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(91): Doctrine\DBAL\Connection->getDatabasePlatform() #7 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(131): OrangeHRM\ORM\Doctrine->__construct() #8 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(141): OrangeHRM\ORM\Doctrine::getInstance() #9 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(1093): OrangeHRM\ORM\Doctrine::getEntityManager() #10 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(608): Symfony\Component\DependencyInjection\ContainerBuilder->createService(Object(Symfony\Component\DependencyInjection\Definition), Array, true, 'doctrine.entity...') #11 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(553): Symfony\Component\DependencyInjection\ContainerBuilder->doGet('doctrine.entity...', 1) #12 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Traits\ORM\EntityManagerTrait.php(34): Symfony\Component\DependencyInjection\ContainerBuilder->get('doctrine.entity...') #13 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Traits\ORM\EntityManagerHelperTrait.php(42): OrangeHRM\Core\Dao\BaseDao->getEntityManager() #14 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Dao\ConfigDao.php(64): OrangeHRM\Core\Dao\BaseDao->getRepository('OrangeHRM\\Entit...') #15 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Service\ConfigService.php(136): OrangeHRM\Core\Dao\ConfigDao->getValue('instance.identi...') #16 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Service\ConfigService.php(415): OrangeHRM\Core\Service\ConfigService->_getConfigValue('instance.identi...') #17 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\config\CorePluginConfiguration.php(120): OrangeHRM\Core\Service\ConfigService->getInstanceIdentifier() #18 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\config\CorePluginConfiguration.php(102): CorePluginConfiguration->registerCoreSubscribers() #19 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(138): CorePluginConfiguration->initialize(Object(OrangeHRM\Framework\Http\Request)) #20 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(155): OrangeHRM\Framework\Framework->configurePlugins(Object(OrangeHRM\Framework\Http\Request)) #21 C:\xampp\htdocs\difm-hrms\web\index.php(42): OrangeHRM\Framework\Framework->handleRequest(Object(OrangeHRM\Framework\Http\Request)) #22 {main} [] []
+[11-May-2023 06:44:30 Europe/Berlin] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it in C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Driver\PDO\MySQL\Driver.php:27
+Stack trace:
+#0 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Driver\PDO\MySQL\Driver.php(27): PDO->__construct('mysql:host=loca...', 'Fajal', Object(SensitiveParameterValue), Array)
+#1 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(341): Doctrine\DBAL\Driver\PDO\MySQL\Driver->connect(Array)
+#2 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(405): Doctrine\DBAL\Connection->connect()
+#3 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(367): Doctrine\DBAL\Connection->getDatabasePlatformVersion()
+#4 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(284): Doctrine\DBAL\Connection->detectDatabasePlatform()
+#5 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(91): Doctrine\DBAL\Connection->getDatabasePlatform()
+#6 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(131): OrangeHRM\ORM\Doctrine->__construct()
+#7 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(141): OrangeHRM\ORM\Doctrine::getInstance()
+#8 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(1093): OrangeHRM\ORM\Doctrine::getEntityManager()
+#9 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(608): Symfony\Component\DependencyInjection\ContainerBuilder->createService(Object(Symfony\Component\DependencyInjection\Definition), Array, true, 'doctrine.entity...')
+#10 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(553): Symfony\Component\DependencyInjection\ContainerBuilder->doGet('doctrine.entity...', 1)
+#11 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Traits\ORM\EntityManagerTrait.php(34): Symfony\Component\DependencyInjection\ContainerBuilder->get('doctrine.entity...')
+#12 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Traits\ORM\EntityManagerHelperTrait.php(42): OrangeHRM\Core\Dao\BaseDao->getEntityManager()
+#13 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Dao\ConfigDao.php(64): OrangeHRM\Core\Dao\BaseDao->getRepository('OrangeHRM\\Entit...')
+#14 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Service\ConfigService.php(136): OrangeHRM\Core\Dao\ConfigDao->getValue('instance.identi...')
+#15 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Service\ConfigService.php(415): OrangeHRM\Core\Service\ConfigService->_getConfigValue('instance.identi...')
+#16 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\config\CorePluginConfiguration.php(120): OrangeHRM\Core\Service\ConfigService->getInstanceIdentifier()
+#17 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\config\CorePluginConfiguration.php(102): CorePluginConfiguration->registerCoreSubscribers()
+#18 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(138): CorePluginConfiguration->initialize(Object(OrangeHRM\Framework\Http\Request))
+#19 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(155): OrangeHRM\Framework\Framework->configurePlugins(Object(OrangeHRM\Framework\Http\Request))
+#20 C:\xampp\htdocs\difm-hrms\web\index.php(42): OrangeHRM\Framework\Framework->handleRequest(Object(OrangeHRM\Framework\Http\Request))
+#21 {main}
+
+Next Doctrine\DBAL\Driver\PDO\Exception: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it in C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Driver\PDO\Exception.php:30
+Stack trace:
+#0 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Driver\PDO\MySQL\Driver.php(34): Doctrine\DBAL\Driver\PDO\Exception::new(Object(PDOException))
+#1 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(341): Doctrine\DBAL\Driver\PDO\MySQL\Driver->connect(Array)
+#2 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(405): Doctrine\DBAL\Connection->connect()
+#3 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(367): Doctrine\DBAL\Connection->getDatabasePlatformVersion()
+#4 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(284): Doctrine\DBAL\Connection->detectDatabasePlatform()
+#5 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(91): Doctrine\DBAL\Connection->getDatabasePlatform()
+#6 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(131): OrangeHRM\ORM\Doctrine->__construct()
+#7 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(141): OrangeHRM\ORM\Doctrine::getInstance()
+#8 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(1093): OrangeHRM\ORM\Doctrine::getEntityManager()
+#9 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(608): Symfony\Component\DependencyInjection\ContainerBuilder->createService(Object(Symfony\Component\DependencyInjection\Definition), Array, true, 'doctrine.entity...')
+#10 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(553): Symfony\Component\DependencyInjection\ContainerBuilder->doGet('doctrine.entity...', 1)
+#11 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Traits\ORM\EntityManagerTrait.php(34): Symfony\Component\DependencyInjection\ContainerBuilder->get('doctrine.entity...')
+#12 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Traits\ORM\EntityManagerHelperTrait.php(42): OrangeHRM\Core\Dao\BaseDao->getEntityManager()
+#13 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Dao\ConfigDao.php(64): OrangeHRM\Core\Dao\BaseDao->getRepository('OrangeHRM\\Entit...')
+#14 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Service\ConfigService.php(136): OrangeHRM\Core\Dao\ConfigDao->getValue('instance.identi...')
+#15 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Service\ConfigService.php(415): OrangeHRM\Core\Service\ConfigService->_getConfigValue('instance.identi...')
+#16 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\config\CorePluginConfiguration.php(120): OrangeHRM\Core\Service\ConfigService->getInstanceIdentifier()
+#17 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\config\CorePluginConfiguration.php(102): CorePluginConfiguration->registerCoreSubscribers()
+#18 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(138): CorePluginConfiguration->initialize(Object(OrangeHRM\Framework\Http\Request))
+#19 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(155): OrangeHRM\Framework\Framework->configurePlugins(Object(OrangeHRM\Framework\Http\Request))
+#20 C:\xampp\htdocs\difm-hrms\web\index.php(42): OrangeHRM\Framework\Framework->handleRequest(Object(OrangeHRM\Framework\Http\Request))
+#21 {main}
+
+Next Doctrine\DBAL\Exception\ConnectionException: An exception occurred in the driver: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it in C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Driver\API\MySQL\ExceptionConverter.php:103
+Stack trace:
+#0 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(1814): Doctrine\DBAL\Driver\API\MySQL\ExceptionConverter->convert(Object(Doctrine\DBAL\Driver\PDO\Exception), NULL)
+#1 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(1757): Doctrine\DBAL\Connection->handleDriverException(Object(Doctrine\DBAL\Driver\PDO\Exception), NULL)
+#2 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(343): Doctrine\DBAL\Connection->convertException(Object(Doctrine\DBAL\Driver\PDO\Exception))
+#3 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(405): Doctrine\DBAL\Connection->connect()
+#4 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(367): Doctrine\DBAL\Connection->getDatabasePlatformVersion()
+#5 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(284): Doctrine\DBAL\Connection->detectDatabasePlatform()
+#6 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(91): Doctrine\DBAL\Connection->getDatabasePlatform()
+#7 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(131): OrangeHRM\ORM\Doctrine->__construct()
+#8 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(141): OrangeHRM\ORM\Doctrine::getInstance()
+#9 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(1093): OrangeHRM\ORM\Doctrine::getEntityManager()
+#10 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(608): Symfony\Component\DependencyInjection\ContainerBuilder->createService(Object(Symfony\Component\DependencyInjection\Definition), Array, true, 'doctrine.entity...')
+#11 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(553): Symfony\Component\DependencyInjection\ContainerBuilder->doGet('doctrine.entity...', 1)
+#12 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Traits\ORM\EntityManagerTrait.php(34): Symfony\Component\DependencyInjection\ContainerBuilder->get('doctrine.entity...')
+#13 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Traits\ORM\EntityManagerHelperTrait.php(42): OrangeHRM\Core\Dao\BaseDao->getEntityManager()
+#14 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Dao\ConfigDao.php(64): OrangeHRM\Core\Dao\BaseDao->getRepository('OrangeHRM\\Entit...')
+#15 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Service\ConfigService.php(136): OrangeHRM\Core\Dao\ConfigDao->getValue('instance.identi...')
+#16 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Service\ConfigService.php(415): OrangeHRM\Core\Service\ConfigService->_getConfigValue('instance.identi...')
+#17 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\config\CorePluginConfiguration.php(120): OrangeHRM\Core\Service\ConfigService->getInstanceIdentifier()
+#18 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\config\CorePluginConfiguration.php(102): CorePluginConfiguration->registerCoreSubscribers()
+#19 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(138): CorePluginConfiguration->initialize(Object(OrangeHRM\Framework\Http\Request))
+#20 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(155): OrangeHRM\Framework\Framework->configurePlugins(Object(OrangeHRM\Framework\Http\Request))
+#21 C:\xampp\htdocs\difm-hrms\web\index.php(42): OrangeHRM\Framework\Framework->handleRequest(Object(OrangeHRM\Framework\Http\Request))
+#22 {main}
+
+Next OrangeHRM\Core\Exception\DaoException: An exception occurred in the driver: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it in C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Dao\ConfigDao.php:72
+Stack trace:
+#0 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Service\ConfigService.php(136): OrangeHRM\Core\Dao\ConfigDao->getValue('instance.identi...')
+#1 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Service\ConfigService.php(415): OrangeHRM\Core\Service\ConfigService->_getConfigValue('instance.identi...')
+#2 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\config\CorePluginConfiguration.php(120): OrangeHRM\Core\Service\ConfigService->getInstanceIdentifier()
+#3 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\config\CorePluginConfiguration.php(102): CorePluginConfiguration->registerCoreSubscribers()
+#4 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(138): CorePluginConfiguration->initialize(Object(OrangeHRM\Framework\Http\Request))
+#5 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(155): OrangeHRM\Framework\Framework->configurePlugins(Object(OrangeHRM\Framework\Http\Request))
+#6 C:\xampp\htdocs\difm-hrms\web\index.php(42): OrangeHRM\Framework\Framework->handleRequest(Object(OrangeHRM\Framework\Http\Request))
+#7 {main}
+  thrown in C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Dao\ConfigDao.php on line 72
+[2023-05-11T06:44:39.294313+02:00] orangehrm.ERROR: An exception occurred in the driver: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it [] []
+[2023-05-11T06:44:39.296211+02:00] orangehrm.ERROR: #0 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(1814): Doctrine\DBAL\Driver\API\MySQL\ExceptionConverter->convert(Object(Doctrine\DBAL\Driver\PDO\Exception), NULL) #1 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(1757): Doctrine\DBAL\Connection->handleDriverException(Object(Doctrine\DBAL\Driver\PDO\Exception), NULL) #2 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(343): Doctrine\DBAL\Connection->convertException(Object(Doctrine\DBAL\Driver\PDO\Exception)) #3 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(405): Doctrine\DBAL\Connection->connect() #4 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(367): Doctrine\DBAL\Connection->getDatabasePlatformVersion() #5 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(284): Doctrine\DBAL\Connection->detectDatabasePlatform() #6 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(91): Doctrine\DBAL\Connection->getDatabasePlatform() #7 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(131): OrangeHRM\ORM\Doctrine->__construct() #8 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(141): OrangeHRM\ORM\Doctrine::getInstance() #9 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(1093): OrangeHRM\ORM\Doctrine::getEntityManager() #10 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(608): Symfony\Component\DependencyInjection\ContainerBuilder->createService(Object(Symfony\Component\DependencyInjection\Definition), Array, true, 'doctrine.entity...') #11 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(553): Symfony\Component\DependencyInjection\ContainerBuilder->doGet('doctrine.entity...', 1) #12 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Traits\ORM\EntityManagerTrait.php(34): Symfony\Component\DependencyInjection\ContainerBuilder->get('doctrine.entity...') #13 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Traits\ORM\EntityManagerHelperTrait.php(42): OrangeHRM\Core\Dao\BaseDao->getEntityManager() #14 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Dao\ConfigDao.php(64): OrangeHRM\Core\Dao\BaseDao->getRepository('OrangeHRM\\Entit...') #15 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Service\ConfigService.php(136): OrangeHRM\Core\Dao\ConfigDao->getValue('instance.identi...') #16 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Service\ConfigService.php(415): OrangeHRM\Core\Service\ConfigService->_getConfigValue('instance.identi...') #17 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\config\CorePluginConfiguration.php(120): OrangeHRM\Core\Service\ConfigService->getInstanceIdentifier() #18 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\config\CorePluginConfiguration.php(102): CorePluginConfiguration->registerCoreSubscribers() #19 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(138): CorePluginConfiguration->initialize(Object(OrangeHRM\Framework\Http\Request)) #20 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(155): OrangeHRM\Framework\Framework->configurePlugins(Object(OrangeHRM\Framework\Http\Request)) #21 C:\xampp\htdocs\difm-hrms\web\index.php(42): OrangeHRM\Framework\Framework->handleRequest(Object(OrangeHRM\Framework\Http\Request)) #22 {main} [] []
+[11-May-2023 06:44:39 Europe/Berlin] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it in C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Driver\PDO\MySQL\Driver.php:27
+Stack trace:
+#0 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Driver\PDO\MySQL\Driver.php(27): PDO->__construct('mysql:host=loca...', 'Fajal', Object(SensitiveParameterValue), Array)
+#1 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(341): Doctrine\DBAL\Driver\PDO\MySQL\Driver->connect(Array)
+#2 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(405): Doctrine\DBAL\Connection->connect()
+#3 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(367): Doctrine\DBAL\Connection->getDatabasePlatformVersion()
+#4 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(284): Doctrine\DBAL\Connection->detectDatabasePlatform()
+#5 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(91): Doctrine\DBAL\Connection->getDatabasePlatform()
+#6 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(131): OrangeHRM\ORM\Doctrine->__construct()
+#7 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(141): OrangeHRM\ORM\Doctrine::getInstance()
+#8 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(1093): OrangeHRM\ORM\Doctrine::getEntityManager()
+#9 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(608): Symfony\Component\DependencyInjection\ContainerBuilder->createService(Object(Symfony\Component\DependencyInjection\Definition), Array, true, 'doctrine.entity...')
+#10 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(553): Symfony\Component\DependencyInjection\ContainerBuilder->doGet('doctrine.entity...', 1)
+#11 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Traits\ORM\EntityManagerTrait.php(34): Symfony\Component\DependencyInjection\ContainerBuilder->get('doctrine.entity...')
+#12 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Traits\ORM\EntityManagerHelperTrait.php(42): OrangeHRM\Core\Dao\BaseDao->getEntityManager()
+#13 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Dao\ConfigDao.php(64): OrangeHRM\Core\Dao\BaseDao->getRepository('OrangeHRM\\Entit...')
+#14 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Service\ConfigService.php(136): OrangeHRM\Core\Dao\ConfigDao->getValue('instance.identi...')
+#15 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Service\ConfigService.php(415): OrangeHRM\Core\Service\ConfigService->_getConfigValue('instance.identi...')
+#16 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\config\CorePluginConfiguration.php(120): OrangeHRM\Core\Service\ConfigService->getInstanceIdentifier()
+#17 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\config\CorePluginConfiguration.php(102): CorePluginConfiguration->registerCoreSubscribers()
+#18 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(138): CorePluginConfiguration->initialize(Object(OrangeHRM\Framework\Http\Request))
+#19 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(155): OrangeHRM\Framework\Framework->configurePlugins(Object(OrangeHRM\Framework\Http\Request))
+#20 C:\xampp\htdocs\difm-hrms\web\index.php(42): OrangeHRM\Framework\Framework->handleRequest(Object(OrangeHRM\Framework\Http\Request))
+#21 {main}
+
+Next Doctrine\DBAL\Driver\PDO\Exception: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it in C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Driver\PDO\Exception.php:30
+Stack trace:
+#0 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Driver\PDO\MySQL\Driver.php(34): Doctrine\DBAL\Driver\PDO\Exception::new(Object(PDOException))
+#1 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(341): Doctrine\DBAL\Driver\PDO\MySQL\Driver->connect(Array)
+#2 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(405): Doctrine\DBAL\Connection->connect()
+#3 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(367): Doctrine\DBAL\Connection->getDatabasePlatformVersion()
+#4 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(284): Doctrine\DBAL\Connection->detectDatabasePlatform()
+#5 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(91): Doctrine\DBAL\Connection->getDatabasePlatform()
+#6 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(131): OrangeHRM\ORM\Doctrine->__construct()
+#7 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(141): OrangeHRM\ORM\Doctrine::getInstance()
+#8 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(1093): OrangeHRM\ORM\Doctrine::getEntityManager()
+#9 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(608): Symfony\Component\DependencyInjection\ContainerBuilder->createService(Object(Symfony\Component\DependencyInjection\Definition), Array, true, 'doctrine.entity...')
+#10 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(553): Symfony\Component\DependencyInjection\ContainerBuilder->doGet('doctrine.entity...', 1)
+#11 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Traits\ORM\EntityManagerTrait.php(34): Symfony\Component\DependencyInjection\ContainerBuilder->get('doctrine.entity...')
+#12 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Traits\ORM\EntityManagerHelperTrait.php(42): OrangeHRM\Core\Dao\BaseDao->getEntityManager()
+#13 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Dao\ConfigDao.php(64): OrangeHRM\Core\Dao\BaseDao->getRepository('OrangeHRM\\Entit...')
+#14 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Service\ConfigService.php(136): OrangeHRM\Core\Dao\ConfigDao->getValue('instance.identi...')
+#15 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Service\ConfigService.php(415): OrangeHRM\Core\Service\ConfigService->_getConfigValue('instance.identi...')
+#16 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\config\CorePluginConfiguration.php(120): OrangeHRM\Core\Service\ConfigService->getInstanceIdentifier()
+#17 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\config\CorePluginConfiguration.php(102): CorePluginConfiguration->registerCoreSubscribers()
+#18 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(138): CorePluginConfiguration->initialize(Object(OrangeHRM\Framework\Http\Request))
+#19 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(155): OrangeHRM\Framework\Framework->configurePlugins(Object(OrangeHRM\Framework\Http\Request))
+#20 C:\xampp\htdocs\difm-hrms\web\index.php(42): OrangeHRM\Framework\Framework->handleRequest(Object(OrangeHRM\Framework\Http\Request))
+#21 {main}
+
+Next Doctrine\DBAL\Exception\ConnectionException: An exception occurred in the driver: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it in C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Driver\API\MySQL\ExceptionConverter.php:103
+Stack trace:
+#0 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(1814): Doctrine\DBAL\Driver\API\MySQL\ExceptionConverter->convert(Object(Doctrine\DBAL\Driver\PDO\Exception), NULL)
+#1 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(1757): Doctrine\DBAL\Connection->handleDriverException(Object(Doctrine\DBAL\Driver\PDO\Exception), NULL)
+#2 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(343): Doctrine\DBAL\Connection->convertException(Object(Doctrine\DBAL\Driver\PDO\Exception))
+#3 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(405): Doctrine\DBAL\Connection->connect()
+#4 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(367): Doctrine\DBAL\Connection->getDatabasePlatformVersion()
+#5 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(284): Doctrine\DBAL\Connection->detectDatabasePlatform()
+#6 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(91): Doctrine\DBAL\Connection->getDatabasePlatform()
+#7 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(131): OrangeHRM\ORM\Doctrine->__construct()
+#8 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(141): OrangeHRM\ORM\Doctrine::getInstance()
+#9 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(1093): OrangeHRM\ORM\Doctrine::getEntityManager()
+#10 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(608): Symfony\Component\DependencyInjection\ContainerBuilder->createService(Object(Symfony\Component\DependencyInjection\Definition), Array, true, 'doctrine.entity...')
+#11 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(553): Symfony\Component\DependencyInjection\ContainerBuilder->doGet('doctrine.entity...', 1)
+#12 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Traits\ORM\EntityManagerTrait.php(34): Symfony\Component\DependencyInjection\ContainerBuilder->get('doctrine.entity...')
+#13 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Traits\ORM\EntityManagerHelperTrait.php(42): OrangeHRM\Core\Dao\BaseDao->getEntityManager()
+#14 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Dao\ConfigDao.php(64): OrangeHRM\Core\Dao\BaseDao->getRepository('OrangeHRM\\Entit...')
+#15 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Service\ConfigService.php(136): OrangeHRM\Core\Dao\ConfigDao->getValue('instance.identi...')
+#16 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Service\ConfigService.php(415): OrangeHRM\Core\Service\ConfigService->_getConfigValue('instance.identi...')
+#17 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\config\CorePluginConfiguration.php(120): OrangeHRM\Core\Service\ConfigService->getInstanceIdentifier()
+#18 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\config\CorePluginConfiguration.php(102): CorePluginConfiguration->registerCoreSubscribers()
+#19 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(138): CorePluginConfiguration->initialize(Object(OrangeHRM\Framework\Http\Request))
+#20 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(155): OrangeHRM\Framework\Framework->configurePlugins(Object(OrangeHRM\Framework\Http\Request))
+#21 C:\xampp\htdocs\difm-hrms\web\index.php(42): OrangeHRM\Framework\Framework->handleRequest(Object(OrangeHRM\Framework\Http\Request))
+#22 {main}
+
+Next OrangeHRM\Core\Exception\DaoException: An exception occurred in the driver: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it in C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Dao\ConfigDao.php:72
+Stack trace:
+#0 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Service\ConfigService.php(136): OrangeHRM\Core\Dao\ConfigDao->getValue('instance.identi...')
+#1 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Service\ConfigService.php(415): OrangeHRM\Core\Service\ConfigService->_getConfigValue('instance.identi...')
+#2 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\config\CorePluginConfiguration.php(120): OrangeHRM\Core\Service\ConfigService->getInstanceIdentifier()
+#3 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\config\CorePluginConfiguration.php(102): CorePluginConfiguration->registerCoreSubscribers()
+#4 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(138): CorePluginConfiguration->initialize(Object(OrangeHRM\Framework\Http\Request))
+#5 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(155): OrangeHRM\Framework\Framework->configurePlugins(Object(OrangeHRM\Framework\Http\Request))
+#6 C:\xampp\htdocs\difm-hrms\web\index.php(42): OrangeHRM\Framework\Framework->handleRequest(Object(OrangeHRM\Framework\Http\Request))
+#7 {main}
+  thrown in C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Dao\ConfigDao.php on line 72
+[2023-05-11T06:45:05.698544+02:00] orangehrm.ERROR: An exception occurred in the driver: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it [] []
+[2023-05-11T06:45:05.700441+02:00] orangehrm.ERROR: #0 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(1814): Doctrine\DBAL\Driver\API\MySQL\ExceptionConverter->convert(Object(Doctrine\DBAL\Driver\PDO\Exception), NULL) #1 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(1757): Doctrine\DBAL\Connection->handleDriverException(Object(Doctrine\DBAL\Driver\PDO\Exception), NULL) #2 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(343): Doctrine\DBAL\Connection->convertException(Object(Doctrine\DBAL\Driver\PDO\Exception)) #3 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(405): Doctrine\DBAL\Connection->connect() #4 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(367): Doctrine\DBAL\Connection->getDatabasePlatformVersion() #5 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(284): Doctrine\DBAL\Connection->detectDatabasePlatform() #6 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(91): Doctrine\DBAL\Connection->getDatabasePlatform() #7 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(131): OrangeHRM\ORM\Doctrine->__construct() #8 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(141): OrangeHRM\ORM\Doctrine::getInstance() #9 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(1093): OrangeHRM\ORM\Doctrine::getEntityManager() #10 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(608): Symfony\Component\DependencyInjection\ContainerBuilder->createService(Object(Symfony\Component\DependencyInjection\Definition), Array, true, 'doctrine.entity...') #11 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(553): Symfony\Component\DependencyInjection\ContainerBuilder->doGet('doctrine.entity...', 1) #12 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Traits\ORM\EntityManagerTrait.php(34): Symfony\Component\DependencyInjection\ContainerBuilder->get('doctrine.entity...') #13 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Traits\ORM\EntityManagerHelperTrait.php(42): OrangeHRM\Core\Dao\BaseDao->getEntityManager() #14 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Dao\ConfigDao.php(64): OrangeHRM\Core\Dao\BaseDao->getRepository('OrangeHRM\\Entit...') #15 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Service\ConfigService.php(136): OrangeHRM\Core\Dao\ConfigDao->getValue('instance.identi...') #16 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Service\ConfigService.php(415): OrangeHRM\Core\Service\ConfigService->_getConfigValue('instance.identi...') #17 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\config\CorePluginConfiguration.php(120): OrangeHRM\Core\Service\ConfigService->getInstanceIdentifier() #18 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\config\CorePluginConfiguration.php(102): CorePluginConfiguration->registerCoreSubscribers() #19 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(138): CorePluginConfiguration->initialize(Object(OrangeHRM\Framework\Http\Request)) #20 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(155): OrangeHRM\Framework\Framework->configurePlugins(Object(OrangeHRM\Framework\Http\Request)) #21 C:\xampp\htdocs\difm-hrms\web\index.php(42): OrangeHRM\Framework\Framework->handleRequest(Object(OrangeHRM\Framework\Http\Request)) #22 {main} [] []
+[11-May-2023 06:45:05 Europe/Berlin] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it in C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Driver\PDO\MySQL\Driver.php:27
+Stack trace:
+#0 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Driver\PDO\MySQL\Driver.php(27): PDO->__construct('mysql:host=loca...', 'Fajal', Object(SensitiveParameterValue), Array)
+#1 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(341): Doctrine\DBAL\Driver\PDO\MySQL\Driver->connect(Array)
+#2 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(405): Doctrine\DBAL\Connection->connect()
+#3 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(367): Doctrine\DBAL\Connection->getDatabasePlatformVersion()
+#4 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(284): Doctrine\DBAL\Connection->detectDatabasePlatform()
+#5 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(91): Doctrine\DBAL\Connection->getDatabasePlatform()
+#6 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(131): OrangeHRM\ORM\Doctrine->__construct()
+#7 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(141): OrangeHRM\ORM\Doctrine::getInstance()
+#8 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(1093): OrangeHRM\ORM\Doctrine::getEntityManager()
+#9 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(608): Symfony\Component\DependencyInjection\ContainerBuilder->createService(Object(Symfony\Component\DependencyInjection\Definition), Array, true, 'doctrine.entity...')
+#10 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(553): Symfony\Component\DependencyInjection\ContainerBuilder->doGet('doctrine.entity...', 1)
+#11 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Traits\ORM\EntityManagerTrait.php(34): Symfony\Component\DependencyInjection\ContainerBuilder->get('doctrine.entity...')
+#12 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Traits\ORM\EntityManagerHelperTrait.php(42): OrangeHRM\Core\Dao\BaseDao->getEntityManager()
+#13 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Dao\ConfigDao.php(64): OrangeHRM\Core\Dao\BaseDao->getRepository('OrangeHRM\\Entit...')
+#14 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Service\ConfigService.php(136): OrangeHRM\Core\Dao\ConfigDao->getValue('instance.identi...')
+#15 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Service\ConfigService.php(415): OrangeHRM\Core\Service\ConfigService->_getConfigValue('instance.identi...')
+#16 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\config\CorePluginConfiguration.php(120): OrangeHRM\Core\Service\ConfigService->getInstanceIdentifier()
+#17 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\config\CorePluginConfiguration.php(102): CorePluginConfiguration->registerCoreSubscribers()
+#18 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(138): CorePluginConfiguration->initialize(Object(OrangeHRM\Framework\Http\Request))
+#19 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(155): OrangeHRM\Framework\Framework->configurePlugins(Object(OrangeHRM\Framework\Http\Request))
+#20 C:\xampp\htdocs\difm-hrms\web\index.php(42): OrangeHRM\Framework\Framework->handleRequest(Object(OrangeHRM\Framework\Http\Request))
+#21 {main}
+
+Next Doctrine\DBAL\Driver\PDO\Exception: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it in C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Driver\PDO\Exception.php:30
+Stack trace:
+#0 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Driver\PDO\MySQL\Driver.php(34): Doctrine\DBAL\Driver\PDO\Exception::new(Object(PDOException))
+#1 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(341): Doctrine\DBAL\Driver\PDO\MySQL\Driver->connect(Array)
+#2 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(405): Doctrine\DBAL\Connection->connect()
+#3 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(367): Doctrine\DBAL\Connection->getDatabasePlatformVersion()
+#4 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(284): Doctrine\DBAL\Connection->detectDatabasePlatform()
+#5 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(91): Doctrine\DBAL\Connection->getDatabasePlatform()
+#6 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(131): OrangeHRM\ORM\Doctrine->__construct()
+#7 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(141): OrangeHRM\ORM\Doctrine::getInstance()
+#8 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(1093): OrangeHRM\ORM\Doctrine::getEntityManager()
+#9 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(608): Symfony\Component\DependencyInjection\ContainerBuilder->createService(Object(Symfony\Component\DependencyInjection\Definition), Array, true, 'doctrine.entity...')
+#10 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(553): Symfony\Component\DependencyInjection\ContainerBuilder->doGet('doctrine.entity...', 1)
+#11 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Traits\ORM\EntityManagerTrait.php(34): Symfony\Component\DependencyInjection\ContainerBuilder->get('doctrine.entity...')
+#12 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Traits\ORM\EntityManagerHelperTrait.php(42): OrangeHRM\Core\Dao\BaseDao->getEntityManager()
+#13 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Dao\ConfigDao.php(64): OrangeHRM\Core\Dao\BaseDao->getRepository('OrangeHRM\\Entit...')
+#14 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Service\ConfigService.php(136): OrangeHRM\Core\Dao\ConfigDao->getValue('instance.identi...')
+#15 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Service\ConfigService.php(415): OrangeHRM\Core\Service\ConfigService->_getConfigValue('instance.identi...')
+#16 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\config\CorePluginConfiguration.php(120): OrangeHRM\Core\Service\ConfigService->getInstanceIdentifier()
+#17 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\config\CorePluginConfiguration.php(102): CorePluginConfiguration->registerCoreSubscribers()
+#18 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(138): CorePluginConfiguration->initialize(Object(OrangeHRM\Framework\Http\Request))
+#19 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(155): OrangeHRM\Framework\Framework->configurePlugins(Object(OrangeHRM\Framework\Http\Request))
+#20 C:\xampp\htdocs\difm-hrms\web\index.php(42): OrangeHRM\Framework\Framework->handleRequest(Object(OrangeHRM\Framework\Http\Request))
+#21 {main}
+
+Next Doctrine\DBAL\Exception\ConnectionException: An exception occurred in the driver: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it in C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Driver\API\MySQL\ExceptionConverter.php:103
+Stack trace:
+#0 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(1814): Doctrine\DBAL\Driver\API\MySQL\ExceptionConverter->convert(Object(Doctrine\DBAL\Driver\PDO\Exception), NULL)
+#1 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(1757): Doctrine\DBAL\Connection->handleDriverException(Object(Doctrine\DBAL\Driver\PDO\Exception), NULL)
+#2 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(343): Doctrine\DBAL\Connection->convertException(Object(Doctrine\DBAL\Driver\PDO\Exception))
+#3 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(405): Doctrine\DBAL\Connection->connect()
+#4 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(367): Doctrine\DBAL\Connection->getDatabasePlatformVersion()
+#5 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(284): Doctrine\DBAL\Connection->detectDatabasePlatform()
+#6 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(91): Doctrine\DBAL\Connection->getDatabasePlatform()
+#7 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(131): OrangeHRM\ORM\Doctrine->__construct()
+#8 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(141): OrangeHRM\ORM\Doctrine::getInstance()
+#9 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(1093): OrangeHRM\ORM\Doctrine::getEntityManager()
+#10 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(608): Symfony\Component\DependencyInjection\ContainerBuilder->createService(Object(Symfony\Component\DependencyInjection\Definition), Array, true, 'doctrine.entity...')
+#11 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(553): Symfony\Component\DependencyInjection\ContainerBuilder->doGet('doctrine.entity...', 1)
+#12 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Traits\ORM\EntityManagerTrait.php(34): Symfony\Component\DependencyInjection\ContainerBuilder->get('doctrine.entity...')
+#13 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Traits\ORM\EntityManagerHelperTrait.php(42): OrangeHRM\Core\Dao\BaseDao->getEntityManager()
+#14 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Dao\ConfigDao.php(64): OrangeHRM\Core\Dao\BaseDao->getRepository('OrangeHRM\\Entit...')
+#15 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Service\ConfigService.php(136): OrangeHRM\Core\Dao\ConfigDao->getValue('instance.identi...')
+#16 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Service\ConfigService.php(415): OrangeHRM\Core\Service\ConfigService->_getConfigValue('instance.identi...')
+#17 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\config\CorePluginConfiguration.php(120): OrangeHRM\Core\Service\ConfigService->getInstanceIdentifier()
+#18 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\config\CorePluginConfiguration.php(102): CorePluginConfiguration->registerCoreSubscribers()
+#19 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(138): CorePluginConfiguration->initialize(Object(OrangeHRM\Framework\Http\Request))
+#20 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(155): OrangeHRM\Framework\Framework->configurePlugins(Object(OrangeHRM\Framework\Http\Request))
+#21 C:\xampp\htdocs\difm-hrms\web\index.php(42): OrangeHRM\Framework\Framework->handleRequest(Object(OrangeHRM\Framework\Http\Request))
+#22 {main}
+
+Next OrangeHRM\Core\Exception\DaoException: An exception occurred in the driver: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it in C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Dao\ConfigDao.php:72
+Stack trace:
+#0 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Service\ConfigService.php(136): OrangeHRM\Core\Dao\ConfigDao->getValue('instance.identi...')
+#1 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Service\ConfigService.php(415): OrangeHRM\Core\Service\ConfigService->_getConfigValue('instance.identi...')
+#2 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\config\CorePluginConfiguration.php(120): OrangeHRM\Core\Service\ConfigService->getInstanceIdentifier()
+#3 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\config\CorePluginConfiguration.php(102): CorePluginConfiguration->registerCoreSubscribers()
+#4 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(138): CorePluginConfiguration->initialize(Object(OrangeHRM\Framework\Http\Request))
+#5 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(155): OrangeHRM\Framework\Framework->configurePlugins(Object(OrangeHRM\Framework\Http\Request))
+#6 C:\xampp\htdocs\difm-hrms\web\index.php(42): OrangeHRM\Framework\Framework->handleRequest(Object(OrangeHRM\Framework\Http\Request))
+#7 {main}
+  thrown in C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Dao\ConfigDao.php on line 72
+[2023-05-11T06:45:31.119365+02:00] orangehrm.ERROR: An exception occurred in the driver: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it [] []
+[2023-05-11T06:45:31.121106+02:00] orangehrm.ERROR: #0 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(1814): Doctrine\DBAL\Driver\API\MySQL\ExceptionConverter->convert(Object(Doctrine\DBAL\Driver\PDO\Exception), NULL) #1 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(1757): Doctrine\DBAL\Connection->handleDriverException(Object(Doctrine\DBAL\Driver\PDO\Exception), NULL) #2 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(343): Doctrine\DBAL\Connection->convertException(Object(Doctrine\DBAL\Driver\PDO\Exception)) #3 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(405): Doctrine\DBAL\Connection->connect() #4 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(367): Doctrine\DBAL\Connection->getDatabasePlatformVersion() #5 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(284): Doctrine\DBAL\Connection->detectDatabasePlatform() #6 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(91): Doctrine\DBAL\Connection->getDatabasePlatform() #7 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(131): OrangeHRM\ORM\Doctrine->__construct() #8 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(141): OrangeHRM\ORM\Doctrine::getInstance() #9 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(1093): OrangeHRM\ORM\Doctrine::getEntityManager() #10 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(608): Symfony\Component\DependencyInjection\ContainerBuilder->createService(Object(Symfony\Component\DependencyInjection\Definition), Array, true, 'doctrine.entity...') #11 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(553): Symfony\Component\DependencyInjection\ContainerBuilder->doGet('doctrine.entity...', 1) #12 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Traits\ORM\EntityManagerTrait.php(34): Symfony\Component\DependencyInjection\ContainerBuilder->get('doctrine.entity...') #13 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Traits\ORM\EntityManagerHelperTrait.php(42): OrangeHRM\Core\Dao\BaseDao->getEntityManager() #14 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Dao\ConfigDao.php(64): OrangeHRM\Core\Dao\BaseDao->getRepository('OrangeHRM\\Entit...') #15 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Service\ConfigService.php(136): OrangeHRM\Core\Dao\ConfigDao->getValue('instance.identi...') #16 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Service\ConfigService.php(415): OrangeHRM\Core\Service\ConfigService->_getConfigValue('instance.identi...') #17 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\config\CorePluginConfiguration.php(120): OrangeHRM\Core\Service\ConfigService->getInstanceIdentifier() #18 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\config\CorePluginConfiguration.php(102): CorePluginConfiguration->registerCoreSubscribers() #19 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(138): CorePluginConfiguration->initialize(Object(OrangeHRM\Framework\Http\Request)) #20 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(155): OrangeHRM\Framework\Framework->configurePlugins(Object(OrangeHRM\Framework\Http\Request)) #21 C:\xampp\htdocs\difm-hrms\web\index.php(42): OrangeHRM\Framework\Framework->handleRequest(Object(OrangeHRM\Framework\Http\Request)) #22 {main} [] []
+[11-May-2023 06:45:31 Europe/Berlin] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it in C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Driver\PDO\MySQL\Driver.php:27
+Stack trace:
+#0 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Driver\PDO\MySQL\Driver.php(27): PDO->__construct('mysql:host=loca...', 'Fajal', Object(SensitiveParameterValue), Array)
+#1 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(341): Doctrine\DBAL\Driver\PDO\MySQL\Driver->connect(Array)
+#2 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(405): Doctrine\DBAL\Connection->connect()
+#3 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(367): Doctrine\DBAL\Connection->getDatabasePlatformVersion()
+#4 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(284): Doctrine\DBAL\Connection->detectDatabasePlatform()
+#5 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(91): Doctrine\DBAL\Connection->getDatabasePlatform()
+#6 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(131): OrangeHRM\ORM\Doctrine->__construct()
+#7 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(141): OrangeHRM\ORM\Doctrine::getInstance()
+#8 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(1093): OrangeHRM\ORM\Doctrine::getEntityManager()
+#9 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(608): Symfony\Component\DependencyInjection\ContainerBuilder->createService(Object(Symfony\Component\DependencyInjection\Definition), Array, true, 'doctrine.entity...')
+#10 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(553): Symfony\Component\DependencyInjection\ContainerBuilder->doGet('doctrine.entity...', 1)
+#11 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Traits\ORM\EntityManagerTrait.php(34): Symfony\Component\DependencyInjection\ContainerBuilder->get('doctrine.entity...')
+#12 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Traits\ORM\EntityManagerHelperTrait.php(42): OrangeHRM\Core\Dao\BaseDao->getEntityManager()
+#13 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Dao\ConfigDao.php(64): OrangeHRM\Core\Dao\BaseDao->getRepository('OrangeHRM\\Entit...')
+#14 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Service\ConfigService.php(136): OrangeHRM\Core\Dao\ConfigDao->getValue('instance.identi...')
+#15 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Service\ConfigService.php(415): OrangeHRM\Core\Service\ConfigService->_getConfigValue('instance.identi...')
+#16 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\config\CorePluginConfiguration.php(120): OrangeHRM\Core\Service\ConfigService->getInstanceIdentifier()
+#17 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\config\CorePluginConfiguration.php(102): CorePluginConfiguration->registerCoreSubscribers()
+#18 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(138): CorePluginConfiguration->initialize(Object(OrangeHRM\Framework\Http\Request))
+#19 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(155): OrangeHRM\Framework\Framework->configurePlugins(Object(OrangeHRM\Framework\Http\Request))
+#20 C:\xampp\htdocs\difm-hrms\web\index.php(42): OrangeHRM\Framework\Framework->handleRequest(Object(OrangeHRM\Framework\Http\Request))
+#21 {main}
+
+Next Doctrine\DBAL\Driver\PDO\Exception: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it in C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Driver\PDO\Exception.php:30
+Stack trace:
+#0 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Driver\PDO\MySQL\Driver.php(34): Doctrine\DBAL\Driver\PDO\Exception::new(Object(PDOException))
+#1 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(341): Doctrine\DBAL\Driver\PDO\MySQL\Driver->connect(Array)
+#2 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(405): Doctrine\DBAL\Connection->connect()
+#3 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(367): Doctrine\DBAL\Connection->getDatabasePlatformVersion()
+#4 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(284): Doctrine\DBAL\Connection->detectDatabasePlatform()
+#5 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(91): Doctrine\DBAL\Connection->getDatabasePlatform()
+#6 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(131): OrangeHRM\ORM\Doctrine->__construct()
+#7 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(141): OrangeHRM\ORM\Doctrine::getInstance()
+#8 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(1093): OrangeHRM\ORM\Doctrine::getEntityManager()
+#9 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(608): Symfony\Component\DependencyInjection\ContainerBuilder->createService(Object(Symfony\Component\DependencyInjection\Definition), Array, true, 'doctrine.entity...')
+#10 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(553): Symfony\Component\DependencyInjection\ContainerBuilder->doGet('doctrine.entity...', 1)
+#11 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Traits\ORM\EntityManagerTrait.php(34): Symfony\Component\DependencyInjection\ContainerBuilder->get('doctrine.entity...')
+#12 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Traits\ORM\EntityManagerHelperTrait.php(42): OrangeHRM\Core\Dao\BaseDao->getEntityManager()
+#13 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Dao\ConfigDao.php(64): OrangeHRM\Core\Dao\BaseDao->getRepository('OrangeHRM\\Entit...')
+#14 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Service\ConfigService.php(136): OrangeHRM\Core\Dao\ConfigDao->getValue('instance.identi...')
+#15 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Service\ConfigService.php(415): OrangeHRM\Core\Service\ConfigService->_getConfigValue('instance.identi...')
+#16 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\config\CorePluginConfiguration.php(120): OrangeHRM\Core\Service\ConfigService->getInstanceIdentifier()
+#17 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\config\CorePluginConfiguration.php(102): CorePluginConfiguration->registerCoreSubscribers()
+#18 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(138): CorePluginConfiguration->initialize(Object(OrangeHRM\Framework\Http\Request))
+#19 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(155): OrangeHRM\Framework\Framework->configurePlugins(Object(OrangeHRM\Framework\Http\Request))
+#20 C:\xampp\htdocs\difm-hrms\web\index.php(42): OrangeHRM\Framework\Framework->handleRequest(Object(OrangeHRM\Framework\Http\Request))
+#21 {main}
+
+Next Doctrine\DBAL\Exception\ConnectionException: An exception occurred in the driver: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it in C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Driver\API\MySQL\ExceptionConverter.php:103
+Stack trace:
+#0 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(1814): Doctrine\DBAL\Driver\API\MySQL\ExceptionConverter->convert(Object(Doctrine\DBAL\Driver\PDO\Exception), NULL)
+#1 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(1757): Doctrine\DBAL\Connection->handleDriverException(Object(Doctrine\DBAL\Driver\PDO\Exception), NULL)
+#2 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(343): Doctrine\DBAL\Connection->convertException(Object(Doctrine\DBAL\Driver\PDO\Exception))
+#3 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(405): Doctrine\DBAL\Connection->connect()
+#4 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(367): Doctrine\DBAL\Connection->getDatabasePlatformVersion()
+#5 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(284): Doctrine\DBAL\Connection->detectDatabasePlatform()
+#6 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(91): Doctrine\DBAL\Connection->getDatabasePlatform()
+#7 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(131): OrangeHRM\ORM\Doctrine->__construct()
+#8 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(141): OrangeHRM\ORM\Doctrine::getInstance()
+#9 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(1093): OrangeHRM\ORM\Doctrine::getEntityManager()
+#10 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(608): Symfony\Component\DependencyInjection\ContainerBuilder->createService(Object(Symfony\Component\DependencyInjection\Definition), Array, true, 'doctrine.entity...')
+#11 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(553): Symfony\Component\DependencyInjection\ContainerBuilder->doGet('doctrine.entity...', 1)
+#12 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Traits\ORM\EntityManagerTrait.php(34): Symfony\Component\DependencyInjection\ContainerBuilder->get('doctrine.entity...')
+#13 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Traits\ORM\EntityManagerHelperTrait.php(42): OrangeHRM\Core\Dao\BaseDao->getEntityManager()
+#14 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Dao\ConfigDao.php(64): OrangeHRM\Core\Dao\BaseDao->getRepository('OrangeHRM\\Entit...')
+#15 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Service\ConfigService.php(136): OrangeHRM\Core\Dao\ConfigDao->getValue('instance.identi...')
+#16 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Service\ConfigService.php(415): OrangeHRM\Core\Service\ConfigService->_getConfigValue('instance.identi...')
+#17 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\config\CorePluginConfiguration.php(120): OrangeHRM\Core\Service\ConfigService->getInstanceIdentifier()
+#18 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\config\CorePluginConfiguration.php(102): CorePluginConfiguration->registerCoreSubscribers()
+#19 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(138): CorePluginConfiguration->initialize(Object(OrangeHRM\Framework\Http\Request))
+#20 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(155): OrangeHRM\Framework\Framework->configurePlugins(Object(OrangeHRM\Framework\Http\Request))
+#21 C:\xampp\htdocs\difm-hrms\web\index.php(42): OrangeHRM\Framework\Framework->handleRequest(Object(OrangeHRM\Framework\Http\Request))
+#22 {main}
+
+Next OrangeHRM\Core\Exception\DaoException: An exception occurred in the driver: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it in C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Dao\ConfigDao.php:72
+Stack trace:
+#0 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Service\ConfigService.php(136): OrangeHRM\Core\Dao\ConfigDao->getValue('instance.identi...')
+#1 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Service\ConfigService.php(415): OrangeHRM\Core\Service\ConfigService->_getConfigValue('instance.identi...')
+#2 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\config\CorePluginConfiguration.php(120): OrangeHRM\Core\Service\ConfigService->getInstanceIdentifier()
+#3 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\config\CorePluginConfiguration.php(102): CorePluginConfiguration->registerCoreSubscribers()
+#4 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(138): CorePluginConfiguration->initialize(Object(OrangeHRM\Framework\Http\Request))
+#5 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(155): OrangeHRM\Framework\Framework->configurePlugins(Object(OrangeHRM\Framework\Http\Request))
+#6 C:\xampp\htdocs\difm-hrms\web\index.php(42): OrangeHRM\Framework\Framework->handleRequest(Object(OrangeHRM\Framework\Http\Request))
+#7 {main}
+  thrown in C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Dao\ConfigDao.php on line 72
+[2023-05-11T06:45:39.315691+02:00] orangehrm.ERROR: An exception occurred in the driver: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it [] []
+[2023-05-11T06:45:39.317954+02:00] orangehrm.ERROR: #0 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(1814): Doctrine\DBAL\Driver\API\MySQL\ExceptionConverter->convert(Object(Doctrine\DBAL\Driver\PDO\Exception), NULL) #1 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(1757): Doctrine\DBAL\Connection->handleDriverException(Object(Doctrine\DBAL\Driver\PDO\Exception), NULL) #2 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(343): Doctrine\DBAL\Connection->convertException(Object(Doctrine\DBAL\Driver\PDO\Exception)) #3 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(405): Doctrine\DBAL\Connection->connect() #4 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(367): Doctrine\DBAL\Connection->getDatabasePlatformVersion() #5 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(284): Doctrine\DBAL\Connection->detectDatabasePlatform() #6 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(91): Doctrine\DBAL\Connection->getDatabasePlatform() #7 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(131): OrangeHRM\ORM\Doctrine->__construct() #8 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(141): OrangeHRM\ORM\Doctrine::getInstance() #9 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(1093): OrangeHRM\ORM\Doctrine::getEntityManager() #10 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(608): Symfony\Component\DependencyInjection\ContainerBuilder->createService(Object(Symfony\Component\DependencyInjection\Definition), Array, true, 'doctrine.entity...') #11 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(553): Symfony\Component\DependencyInjection\ContainerBuilder->doGet('doctrine.entity...', 1) #12 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Traits\ORM\EntityManagerTrait.php(34): Symfony\Component\DependencyInjection\ContainerBuilder->get('doctrine.entity...') #13 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Traits\ORM\EntityManagerHelperTrait.php(42): OrangeHRM\Core\Dao\BaseDao->getEntityManager() #14 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Dao\ConfigDao.php(64): OrangeHRM\Core\Dao\BaseDao->getRepository('OrangeHRM\\Entit...') #15 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Service\ConfigService.php(136): OrangeHRM\Core\Dao\ConfigDao->getValue('instance.identi...') #16 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Service\ConfigService.php(415): OrangeHRM\Core\Service\ConfigService->_getConfigValue('instance.identi...') #17 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\config\CorePluginConfiguration.php(120): OrangeHRM\Core\Service\ConfigService->getInstanceIdentifier() #18 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\config\CorePluginConfiguration.php(102): CorePluginConfiguration->registerCoreSubscribers() #19 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(138): CorePluginConfiguration->initialize(Object(OrangeHRM\Framework\Http\Request)) #20 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(155): OrangeHRM\Framework\Framework->configurePlugins(Object(OrangeHRM\Framework\Http\Request)) #21 C:\xampp\htdocs\difm-hrms\web\index.php(42): OrangeHRM\Framework\Framework->handleRequest(Object(OrangeHRM\Framework\Http\Request)) #22 {main} [] []
+[11-May-2023 06:45:39 Europe/Berlin] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it in C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Driver\PDO\MySQL\Driver.php:27
+Stack trace:
+#0 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Driver\PDO\MySQL\Driver.php(27): PDO->__construct('mysql:host=loca...', 'Fajal', Object(SensitiveParameterValue), Array)
+#1 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(341): Doctrine\DBAL\Driver\PDO\MySQL\Driver->connect(Array)
+#2 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(405): Doctrine\DBAL\Connection->connect()
+#3 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(367): Doctrine\DBAL\Connection->getDatabasePlatformVersion()
+#4 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(284): Doctrine\DBAL\Connection->detectDatabasePlatform()
+#5 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(91): Doctrine\DBAL\Connection->getDatabasePlatform()
+#6 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(131): OrangeHRM\ORM\Doctrine->__construct()
+#7 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(141): OrangeHRM\ORM\Doctrine::getInstance()
+#8 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(1093): OrangeHRM\ORM\Doctrine::getEntityManager()
+#9 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(608): Symfony\Component\DependencyInjection\ContainerBuilder->createService(Object(Symfony\Component\DependencyInjection\Definition), Array, true, 'doctrine.entity...')
+#10 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(553): Symfony\Component\DependencyInjection\ContainerBuilder->doGet('doctrine.entity...', 1)
+#11 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Traits\ORM\EntityManagerTrait.php(34): Symfony\Component\DependencyInjection\ContainerBuilder->get('doctrine.entity...')
+#12 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Traits\ORM\EntityManagerHelperTrait.php(42): OrangeHRM\Core\Dao\BaseDao->getEntityManager()
+#13 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Dao\ConfigDao.php(64): OrangeHRM\Core\Dao\BaseDao->getRepository('OrangeHRM\\Entit...')
+#14 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Service\ConfigService.php(136): OrangeHRM\Core\Dao\ConfigDao->getValue('instance.identi...')
+#15 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Service\ConfigService.php(415): OrangeHRM\Core\Service\ConfigService->_getConfigValue('instance.identi...')
+#16 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\config\CorePluginConfiguration.php(120): OrangeHRM\Core\Service\ConfigService->getInstanceIdentifier()
+#17 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\config\CorePluginConfiguration.php(102): CorePluginConfiguration->registerCoreSubscribers()
+#18 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(138): CorePluginConfiguration->initialize(Object(OrangeHRM\Framework\Http\Request))
+#19 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(155): OrangeHRM\Framework\Framework->configurePlugins(Object(OrangeHRM\Framework\Http\Request))
+#20 C:\xampp\htdocs\difm-hrms\web\index.php(42): OrangeHRM\Framework\Framework->handleRequest(Object(OrangeHRM\Framework\Http\Request))
+#21 {main}
+
+Next Doctrine\DBAL\Driver\PDO\Exception: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it in C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Driver\PDO\Exception.php:30
+Stack trace:
+#0 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Driver\PDO\MySQL\Driver.php(34): Doctrine\DBAL\Driver\PDO\Exception::new(Object(PDOException))
+#1 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(341): Doctrine\DBAL\Driver\PDO\MySQL\Driver->connect(Array)
+#2 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(405): Doctrine\DBAL\Connection->connect()
+#3 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(367): Doctrine\DBAL\Connection->getDatabasePlatformVersion()
+#4 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(284): Doctrine\DBAL\Connection->detectDatabasePlatform()
+#5 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(91): Doctrine\DBAL\Connection->getDatabasePlatform()
+#6 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(131): OrangeHRM\ORM\Doctrine->__construct()
+#7 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(141): OrangeHRM\ORM\Doctrine::getInstance()
+#8 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(1093): OrangeHRM\ORM\Doctrine::getEntityManager()
+#9 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(608): Symfony\Component\DependencyInjection\ContainerBuilder->createService(Object(Symfony\Component\DependencyInjection\Definition), Array, true, 'doctrine.entity...')
+#10 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(553): Symfony\Component\DependencyInjection\ContainerBuilder->doGet('doctrine.entity...', 1)
+#11 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Traits\ORM\EntityManagerTrait.php(34): Symfony\Component\DependencyInjection\ContainerBuilder->get('doctrine.entity...')
+#12 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Traits\ORM\EntityManagerHelperTrait.php(42): OrangeHRM\Core\Dao\BaseDao->getEntityManager()
+#13 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Dao\ConfigDao.php(64): OrangeHRM\Core\Dao\BaseDao->getRepository('OrangeHRM\\Entit...')
+#14 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Service\ConfigService.php(136): OrangeHRM\Core\Dao\ConfigDao->getValue('instance.identi...')
+#15 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Service\ConfigService.php(415): OrangeHRM\Core\Service\ConfigService->_getConfigValue('instance.identi...')
+#16 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\config\CorePluginConfiguration.php(120): OrangeHRM\Core\Service\ConfigService->getInstanceIdentifier()
+#17 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\config\CorePluginConfiguration.php(102): CorePluginConfiguration->registerCoreSubscribers()
+#18 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(138): CorePluginConfiguration->initialize(Object(OrangeHRM\Framework\Http\Request))
+#19 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(155): OrangeHRM\Framework\Framework->configurePlugins(Object(OrangeHRM\Framework\Http\Request))
+#20 C:\xampp\htdocs\difm-hrms\web\index.php(42): OrangeHRM\Framework\Framework->handleRequest(Object(OrangeHRM\Framework\Http\Request))
+#21 {main}
+
+Next Doctrine\DBAL\Exception\ConnectionException: An exception occurred in the driver: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it in C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Driver\API\MySQL\ExceptionConverter.php:103
+Stack trace:
+#0 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(1814): Doctrine\DBAL\Driver\API\MySQL\ExceptionConverter->convert(Object(Doctrine\DBAL\Driver\PDO\Exception), NULL)
+#1 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(1757): Doctrine\DBAL\Connection->handleDriverException(Object(Doctrine\DBAL\Driver\PDO\Exception), NULL)
+#2 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(343): Doctrine\DBAL\Connection->convertException(Object(Doctrine\DBAL\Driver\PDO\Exception))
+#3 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(405): Doctrine\DBAL\Connection->connect()
+#4 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(367): Doctrine\DBAL\Connection->getDatabasePlatformVersion()
+#5 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(284): Doctrine\DBAL\Connection->detectDatabasePlatform()
+#6 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(91): Doctrine\DBAL\Connection->getDatabasePlatform()
+#7 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(131): OrangeHRM\ORM\Doctrine->__construct()
+#8 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(141): OrangeHRM\ORM\Doctrine::getInstance()
+#9 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(1093): OrangeHRM\ORM\Doctrine::getEntityManager()
+#10 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(608): Symfony\Component\DependencyInjection\ContainerBuilder->createService(Object(Symfony\Component\DependencyInjection\Definition), Array, true, 'doctrine.entity...')
+#11 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(553): Symfony\Component\DependencyInjection\ContainerBuilder->doGet('doctrine.entity...', 1)
+#12 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Traits\ORM\EntityManagerTrait.php(34): Symfony\Component\DependencyInjection\ContainerBuilder->get('doctrine.entity...')
+#13 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Traits\ORM\EntityManagerHelperTrait.php(42): OrangeHRM\Core\Dao\BaseDao->getEntityManager()
+#14 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Dao\ConfigDao.php(64): OrangeHRM\Core\Dao\BaseDao->getRepository('OrangeHRM\\Entit...')
+#15 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Service\ConfigService.php(136): OrangeHRM\Core\Dao\ConfigDao->getValue('instance.identi...')
+#16 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Service\ConfigService.php(415): OrangeHRM\Core\Service\ConfigService->_getConfigValue('instance.identi...')
+#17 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\config\CorePluginConfiguration.php(120): OrangeHRM\Core\Service\ConfigService->getInstanceIdentifier()
+#18 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\config\CorePluginConfiguration.php(102): CorePluginConfiguration->registerCoreSubscribers()
+#19 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(138): CorePluginConfiguration->initialize(Object(OrangeHRM\Framework\Http\Request))
+#20 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(155): OrangeHRM\Framework\Framework->configurePlugins(Object(OrangeHRM\Framework\Http\Request))
+#21 C:\xampp\htdocs\difm-hrms\web\index.php(42): OrangeHRM\Framework\Framework->handleRequest(Object(OrangeHRM\Framework\Http\Request))
+#22 {main}
+
+Next OrangeHRM\Core\Exception\DaoException: An exception occurred in the driver: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it in C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Dao\ConfigDao.php:72
+Stack trace:
+#0 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Service\ConfigService.php(136): OrangeHRM\Core\Dao\ConfigDao->getValue('instance.identi...')
+#1 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Service\ConfigService.php(415): OrangeHRM\Core\Service\ConfigService->_getConfigValue('instance.identi...')
+#2 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\config\CorePluginConfiguration.php(120): OrangeHRM\Core\Service\ConfigService->getInstanceIdentifier()
+#3 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\config\CorePluginConfiguration.php(102): CorePluginConfiguration->registerCoreSubscribers()
+#4 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(138): CorePluginConfiguration->initialize(Object(OrangeHRM\Framework\Http\Request))
+#5 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(155): OrangeHRM\Framework\Framework->configurePlugins(Object(OrangeHRM\Framework\Http\Request))
+#6 C:\xampp\htdocs\difm-hrms\web\index.php(42): OrangeHRM\Framework\Framework->handleRequest(Object(OrangeHRM\Framework\Http\Request))
+#7 {main}
+  thrown in C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Dao\ConfigDao.php on line 72
+[2023-05-11T06:45:47.519173+02:00] orangehrm.ERROR: An exception occurred in the driver: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it [] []
+[2023-05-11T06:45:47.521367+02:00] orangehrm.ERROR: #0 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(1814): Doctrine\DBAL\Driver\API\MySQL\ExceptionConverter->convert(Object(Doctrine\DBAL\Driver\PDO\Exception), NULL) #1 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(1757): Doctrine\DBAL\Connection->handleDriverException(Object(Doctrine\DBAL\Driver\PDO\Exception), NULL) #2 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(343): Doctrine\DBAL\Connection->convertException(Object(Doctrine\DBAL\Driver\PDO\Exception)) #3 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(405): Doctrine\DBAL\Connection->connect() #4 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(367): Doctrine\DBAL\Connection->getDatabasePlatformVersion() #5 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(284): Doctrine\DBAL\Connection->detectDatabasePlatform() #6 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(91): Doctrine\DBAL\Connection->getDatabasePlatform() #7 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(131): OrangeHRM\ORM\Doctrine->__construct() #8 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(141): OrangeHRM\ORM\Doctrine::getInstance() #9 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(1093): OrangeHRM\ORM\Doctrine::getEntityManager() #10 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(608): Symfony\Component\DependencyInjection\ContainerBuilder->createService(Object(Symfony\Component\DependencyInjection\Definition), Array, true, 'doctrine.entity...') #11 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(553): Symfony\Component\DependencyInjection\ContainerBuilder->doGet('doctrine.entity...', 1) #12 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Traits\ORM\EntityManagerTrait.php(34): Symfony\Component\DependencyInjection\ContainerBuilder->get('doctrine.entity...') #13 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Traits\ORM\EntityManagerHelperTrait.php(42): OrangeHRM\Core\Dao\BaseDao->getEntityManager() #14 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Dao\ConfigDao.php(64): OrangeHRM\Core\Dao\BaseDao->getRepository('OrangeHRM\\Entit...') #15 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Service\ConfigService.php(136): OrangeHRM\Core\Dao\ConfigDao->getValue('instance.identi...') #16 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Service\ConfigService.php(415): OrangeHRM\Core\Service\ConfigService->_getConfigValue('instance.identi...') #17 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\config\CorePluginConfiguration.php(120): OrangeHRM\Core\Service\ConfigService->getInstanceIdentifier() #18 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\config\CorePluginConfiguration.php(102): CorePluginConfiguration->registerCoreSubscribers() #19 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(138): CorePluginConfiguration->initialize(Object(OrangeHRM\Framework\Http\Request)) #20 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(155): OrangeHRM\Framework\Framework->configurePlugins(Object(OrangeHRM\Framework\Http\Request)) #21 C:\xampp\htdocs\difm-hrms\web\index.php(42): OrangeHRM\Framework\Framework->handleRequest(Object(OrangeHRM\Framework\Http\Request)) #22 {main} [] []
+[11-May-2023 06:45:47 Europe/Berlin] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it in C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Driver\PDO\MySQL\Driver.php:27
+Stack trace:
+#0 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Driver\PDO\MySQL\Driver.php(27): PDO->__construct('mysql:host=loca...', 'Fajal', Object(SensitiveParameterValue), Array)
+#1 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(341): Doctrine\DBAL\Driver\PDO\MySQL\Driver->connect(Array)
+#2 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(405): Doctrine\DBAL\Connection->connect()
+#3 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(367): Doctrine\DBAL\Connection->getDatabasePlatformVersion()
+#4 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(284): Doctrine\DBAL\Connection->detectDatabasePlatform()
+#5 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(91): Doctrine\DBAL\Connection->getDatabasePlatform()
+#6 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(131): OrangeHRM\ORM\Doctrine->__construct()
+#7 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(141): OrangeHRM\ORM\Doctrine::getInstance()
+#8 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(1093): OrangeHRM\ORM\Doctrine::getEntityManager()
+#9 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(608): Symfony\Component\DependencyInjection\ContainerBuilder->createService(Object(Symfony\Component\DependencyInjection\Definition), Array, true, 'doctrine.entity...')
+#10 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(553): Symfony\Component\DependencyInjection\ContainerBuilder->doGet('doctrine.entity...', 1)
+#11 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Traits\ORM\EntityManagerTrait.php(34): Symfony\Component\DependencyInjection\ContainerBuilder->get('doctrine.entity...')
+#12 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Traits\ORM\EntityManagerHelperTrait.php(42): OrangeHRM\Core\Dao\BaseDao->getEntityManager()
+#13 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Dao\ConfigDao.php(64): OrangeHRM\Core\Dao\BaseDao->getRepository('OrangeHRM\\Entit...')
+#14 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Service\ConfigService.php(136): OrangeHRM\Core\Dao\ConfigDao->getValue('instance.identi...')
+#15 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Service\ConfigService.php(415): OrangeHRM\Core\Service\ConfigService->_getConfigValue('instance.identi...')
+#16 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\config\CorePluginConfiguration.php(120): OrangeHRM\Core\Service\ConfigService->getInstanceIdentifier()
+#17 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\config\CorePluginConfiguration.php(102): CorePluginConfiguration->registerCoreSubscribers()
+#18 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(138): CorePluginConfiguration->initialize(Object(OrangeHRM\Framework\Http\Request))
+#19 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(155): OrangeHRM\Framework\Framework->configurePlugins(Object(OrangeHRM\Framework\Http\Request))
+#20 C:\xampp\htdocs\difm-hrms\web\index.php(42): OrangeHRM\Framework\Framework->handleRequest(Object(OrangeHRM\Framework\Http\Request))
+#21 {main}
+
+Next Doctrine\DBAL\Driver\PDO\Exception: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it in C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Driver\PDO\Exception.php:30
+Stack trace:
+#0 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Driver\PDO\MySQL\Driver.php(34): Doctrine\DBAL\Driver\PDO\Exception::new(Object(PDOException))
+#1 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(341): Doctrine\DBAL\Driver\PDO\MySQL\Driver->connect(Array)
+#2 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(405): Doctrine\DBAL\Connection->connect()
+#3 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(367): Doctrine\DBAL\Connection->getDatabasePlatformVersion()
+#4 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(284): Doctrine\DBAL\Connection->detectDatabasePlatform()
+#5 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(91): Doctrine\DBAL\Connection->getDatabasePlatform()
+#6 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(131): OrangeHRM\ORM\Doctrine->__construct()
+#7 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(141): OrangeHRM\ORM\Doctrine::getInstance()
+#8 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(1093): OrangeHRM\ORM\Doctrine::getEntityManager()
+#9 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(608): Symfony\Component\DependencyInjection\ContainerBuilder->createService(Object(Symfony\Component\DependencyInjection\Definition), Array, true, 'doctrine.entity...')
+#10 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(553): Symfony\Component\DependencyInjection\ContainerBuilder->doGet('doctrine.entity...', 1)
+#11 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Traits\ORM\EntityManagerTrait.php(34): Symfony\Component\DependencyInjection\ContainerBuilder->get('doctrine.entity...')
+#12 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Traits\ORM\EntityManagerHelperTrait.php(42): OrangeHRM\Core\Dao\BaseDao->getEntityManager()
+#13 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Dao\ConfigDao.php(64): OrangeHRM\Core\Dao\BaseDao->getRepository('OrangeHRM\\Entit...')
+#14 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Service\ConfigService.php(136): OrangeHRM\Core\Dao\ConfigDao->getValue('instance.identi...')
+#15 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Service\ConfigService.php(415): OrangeHRM\Core\Service\ConfigService->_getConfigValue('instance.identi...')
+#16 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\config\CorePluginConfiguration.php(120): OrangeHRM\Core\Service\ConfigService->getInstanceIdentifier()
+#17 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\config\CorePluginConfiguration.php(102): CorePluginConfiguration->registerCoreSubscribers()
+#18 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(138): CorePluginConfiguration->initialize(Object(OrangeHRM\Framework\Http\Request))
+#19 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(155): OrangeHRM\Framework\Framework->configurePlugins(Object(OrangeHRM\Framework\Http\Request))
+#20 C:\xampp\htdocs\difm-hrms\web\index.php(42): OrangeHRM\Framework\Framework->handleRequest(Object(OrangeHRM\Framework\Http\Request))
+#21 {main}
+
+Next Doctrine\DBAL\Exception\ConnectionException: An exception occurred in the driver: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it in C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Driver\API\MySQL\ExceptionConverter.php:103
+Stack trace:
+#0 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(1814): Doctrine\DBAL\Driver\API\MySQL\ExceptionConverter->convert(Object(Doctrine\DBAL\Driver\PDO\Exception), NULL)
+#1 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(1757): Doctrine\DBAL\Connection->handleDriverException(Object(Doctrine\DBAL\Driver\PDO\Exception), NULL)
+#2 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(343): Doctrine\DBAL\Connection->convertException(Object(Doctrine\DBAL\Driver\PDO\Exception))
+#3 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(405): Doctrine\DBAL\Connection->connect()
+#4 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(367): Doctrine\DBAL\Connection->getDatabasePlatformVersion()
+#5 C:\xampp\htdocs\difm-hrms\src\vendor\doctrine\dbal\src\Connection.php(284): Doctrine\DBAL\Connection->detectDatabasePlatform()
+#6 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(91): Doctrine\DBAL\Connection->getDatabasePlatform()
+#7 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(131): OrangeHRM\ORM\Doctrine->__construct()
+#8 C:\xampp\htdocs\difm-hrms\src\lib\orm\Doctrine.php(141): OrangeHRM\ORM\Doctrine::getInstance()
+#9 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(1093): OrangeHRM\ORM\Doctrine::getEntityManager()
+#10 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(608): Symfony\Component\DependencyInjection\ContainerBuilder->createService(Object(Symfony\Component\DependencyInjection\Definition), Array, true, 'doctrine.entity...')
+#11 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\dependency-injection\ContainerBuilder.php(553): Symfony\Component\DependencyInjection\ContainerBuilder->doGet('doctrine.entity...', 1)
+#12 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Traits\ORM\EntityManagerTrait.php(34): Symfony\Component\DependencyInjection\ContainerBuilder->get('doctrine.entity...')
+#13 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Traits\ORM\EntityManagerHelperTrait.php(42): OrangeHRM\Core\Dao\BaseDao->getEntityManager()
+#14 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Dao\ConfigDao.php(64): OrangeHRM\Core\Dao\BaseDao->getRepository('OrangeHRM\\Entit...')
+#15 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Service\ConfigService.php(136): OrangeHRM\Core\Dao\ConfigDao->getValue('instance.identi...')
+#16 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Service\ConfigService.php(415): OrangeHRM\Core\Service\ConfigService->_getConfigValue('instance.identi...')
+#17 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\config\CorePluginConfiguration.php(120): OrangeHRM\Core\Service\ConfigService->getInstanceIdentifier()
+#18 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\config\CorePluginConfiguration.php(102): CorePluginConfiguration->registerCoreSubscribers()
+#19 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(138): CorePluginConfiguration->initialize(Object(OrangeHRM\Framework\Http\Request))
+#20 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(155): OrangeHRM\Framework\Framework->configurePlugins(Object(OrangeHRM\Framework\Http\Request))
+#21 C:\xampp\htdocs\difm-hrms\web\index.php(42): OrangeHRM\Framework\Framework->handleRequest(Object(OrangeHRM\Framework\Http\Request))
+#22 {main}
+
+Next OrangeHRM\Core\Exception\DaoException: An exception occurred in the driver: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it in C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Dao\ConfigDao.php:72
+Stack trace:
+#0 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Service\ConfigService.php(136): OrangeHRM\Core\Dao\ConfigDao->getValue('instance.identi...')
+#1 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Service\ConfigService.php(415): OrangeHRM\Core\Service\ConfigService->_getConfigValue('instance.identi...')
+#2 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\config\CorePluginConfiguration.php(120): OrangeHRM\Core\Service\ConfigService->getInstanceIdentifier()
+#3 C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\config\CorePluginConfiguration.php(102): CorePluginConfiguration->registerCoreSubscribers()
+#4 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(138): CorePluginConfiguration->initialize(Object(OrangeHRM\Framework\Http\Request))
+#5 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(155): OrangeHRM\Framework\Framework->configurePlugins(Object(OrangeHRM\Framework\Http\Request))
+#6 C:\xampp\htdocs\difm-hrms\web\index.php(42): OrangeHRM\Framework\Framework->handleRequest(Object(OrangeHRM\Framework\Http\Request))
+#7 {main}
+  thrown in C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorePlugin\Dao\ConfigDao.php on line 72
+[11-May-2023 07:18:40 Europe/Berlin] PHP Warning:  Undefined variable $affectedRows in C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorporateBrandingPlugin\Api\ThemeAPI.php on line 293
+[11-May-2023 07:18:45 Europe/Berlin] PHP Warning:  Undefined variable $affectedRows in C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorporateBrandingPlugin\Api\ThemeAPI.php on line 293
+[11-May-2023 07:27:23 Europe/Berlin] PHP Warning:  Undefined variable $affectedRows in C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorporateBrandingPlugin\Api\ThemeAPI.php on line 293
+[11-May-2023 07:27:26 Europe/Berlin] PHP Warning:  Undefined variable $affectedRows in C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorporateBrandingPlugin\Api\ThemeAPI.php on line 293
+[11-May-2023 08:43:35 Europe/Berlin] PHP Warning:  Undefined variable $affectedRows in C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorporateBrandingPlugin\Api\ThemeAPI.php on line 293
+[11-May-2023 08:43:38 Europe/Berlin] PHP Warning:  Undefined variable $affectedRows in C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorporateBrandingPlugin\Api\ThemeAPI.php on line 293
+[11-May-2023 08:43:41 Europe/Berlin] PHP Warning:  Undefined variable $affectedRows in C:\xampp\htdocs\difm-hrms\src\plugins\orangehrmCorporateBrandingPlugin\Api\ThemeAPI.php on line 293
+[2023-05-11T08:44:06.344151+02:00] orangehrm.ERROR: Invalid Email configuration [] []
+[2023-05-11T08:44:06.347156+02:00] orangehrm.ERROR: Password reset email could not be sent. [] []
+[2023-05-11T08:54:48.665310+02:00] orangehrm.ERROR: Invalid Email configuration [] []
+[2023-05-11T08:54:48.712170+02:00] orangehrm.ERROR: Password reset email could not be sent. [] []
+[2023-05-11T09:26:57.060914+02:00] orangehrm.ERROR:  [] []
+[2023-05-11T09:26:57.114278+02:00] orangehrm.ERROR: #0 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\event-dispatcher\EventDispatcher.php(230): OrangeHRM\Authentication\Subscriber\AuthenticationSubscriber->onControllerEvent(Object(Symfony\Component\HttpKernel\Event\ControllerEvent), 'kernel.controll...', Object(OrangeHRM\Framework\Event\EventDispatcher)) #1 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\event-dispatcher\EventDispatcher.php(59): Symfony\Component\EventDispatcher\EventDispatcher->callListeners(Array, 'kernel.controll...', Object(Symfony\Component\HttpKernel\Event\ControllerEvent)) #2 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\http-kernel\HttpKernel.php(140): Symfony\Component\EventDispatcher\EventDispatcher->dispatch(Object(Symfony\Component\HttpKernel\Event\ControllerEvent), 'kernel.controll...') #3 C:\xampp\htdocs\difm-hrms\src\vendor\symfony\http-kernel\HttpKernel.php(74): Symfony\Component\HttpKernel\HttpKernel->handleRaw(Object(OrangeHRM\Framework\Http\Request), 1) #4 C:\xampp\htdocs\difm-hrms\src\lib\framework\Framework.php(157): Symfony\Component\HttpKernel\HttpKernel->handle(Object(OrangeHRM\Framework\Http\Request), 1, true) #5 C:\xampp\htdocs\difm-hrms\web\index.php(42): OrangeHRM\Framework\Framework->handleRequest(Object(OrangeHRM\Framework\Http\Request)) #6 {main} [] []
+[2023-05-11T09:30:41.251551+02:00] orangehrm.ERROR: Invalid Email configuration [] []
+[2023-05-11T09:30:41.253206+02:00] orangehrm.ERROR: Password reset email could not be sent. [] []
+[2023-05-11T09:36:22.387544+02:00] orangehrm.ERROR: Invalid Email configuration [] []
+[2023-05-11T09:36:22.389456+02:00] orangehrm.ERROR: Password reset email could not be sent. [] []
