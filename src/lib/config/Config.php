@@ -51,7 +51,7 @@ class Config
     public const MODE_DEMO = 'demo';
 
     public const PRODUCT_NAME = 'DIFM HRMS OS';
-    public const PRODUCT_VERSION = '5.3';
+    public const PRODUCT_VERSION = '0.1v';
     public const PRODUCT_MODE = self::MODE_PROD;
     public const REGISTRATION_URL = 'https://ospenguin.orangehrm.com';
 

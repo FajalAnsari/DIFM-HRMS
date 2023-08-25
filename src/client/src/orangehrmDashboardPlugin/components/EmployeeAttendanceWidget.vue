@@ -217,7 +217,7 @@ export default {
             label: this.$t(
               `general.${new String(item.workDay.day).toLowerCase()}`,
             ),
-            color: COLOR_HEAT_WAVE,
+            color: CHART_COLORS,
           }));
 
           const {lastAction, currentDay, currentWeek, currentUser} = meta;

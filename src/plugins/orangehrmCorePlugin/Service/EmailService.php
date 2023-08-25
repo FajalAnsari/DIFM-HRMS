@@ -349,7 +349,7 @@ class EmailService
 
         if (empty($this->messageFrom)) {
             $this->validateEmailAddress($this->getEmailConfig()->getSentAs());
-            $this->messageFrom = [$this->getEmailConfig()->getSentAs() => "OrangeHRM"];
+            $this->messageFrom = [$this->getEmailConfig()->getSentAs() => "DIFM HRMS"];
         }
 
         if (empty($this->messageTo)) {
@@ -450,7 +450,7 @@ class EmailService
         }
         $subject = "$type Configuration Test Email";
 
-        $body = "This email confirms that $type details set in OrangeHRM ";
+        $body = "This email confirms that $type details set in DIFM HRMS ";
         $body .= 'are correct. You received this email since your email ';
         $body .= 'address was entered to test email in configuration screen.';
 

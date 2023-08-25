@@ -33,9 +33,9 @@ class Conf
             $prefix = defined('TEST_DB_PREFIX') ? TEST_DB_PREFIX : '';
             $this->dbName = $prefix . 'test_difmhrms';
         } else {
-            $this->dbName = 'difmhrms';
+            $this->dbName = 'u273633887_arsenal';
         }
-        $this->dbUser = 'Fajal';
+        $this->dbUser = 'u273633887_arsenal';
         $this->dbPass = 'Fajal321@';
     }
 
